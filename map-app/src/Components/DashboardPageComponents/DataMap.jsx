@@ -3,17 +3,27 @@ import "../DashboardPageComponents/DataMap.css";
 
 import React, { useState, useEffect, useRef } from "react";
 import L from "leaflet";
-import { GeoJSON, MapContainer, useMap, TileLayer } from "react-leaflet";
+import { GeoJSON, MapContainer, useMap, TileLayer,Marker,Popup } from "react-leaflet";
 import myanmarGeoJSON from './../../assets/state_region.json';
 import townshipGeoJSON from "./../../assets/township2.json";
 import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
-// import HorizonBarChart from "./BarChart";
+
+
+import markerData from './../../assets/markerData';
+
+// Chart
+import HorizonBarChart from "./BarChart";
+import LineChart from "./LineChart";
+
+
+
+
 
 
 const SetBounds = ({ geoJsonData ,selectState,setSelectState}) => {
     
 
- 
+  const [previouslyClickedState, setPreviouslyClickedState] = useState(null);
   
     const map = useMap();
   
@@ -25,7 +35,7 @@ const SetBounds = ({ geoJsonData ,selectState,setSelectState}) => {
    layer.on({
     mouseover: () => {
       layer.setStyle({
-        fillColor: "#ff0000",
+        fillColor: "#c40000",
         // Change the fill color on hover
       });
     },
@@ -42,9 +52,37 @@ const SetBounds = ({ geoJsonData ,selectState,setSelectState}) => {
     //     console.log('selectState',selectState)
     //   },
     click: () => {
+      if (previouslyClickedState !== feature.properties.ST) {
+        if (previouslyClickedState) {
+          // Reset the previously clicked state's color
+          map.eachLayer(layer => {
+            if (layer.feature && layer.feature.properties.ST === previouslyClickedState) {
+              layer.setStyle({
+                fillColor: "#3551a4",
+                fillOpacity: '1'
+              });
+            }
+          });
+        }
+
+        // Highlight the newly clicked state
+        layer.setStyle({
+          fillColor: "#ff0000",
+          fillOpacity: '1'
+        });
+        setPreviouslyClickedState(feature.properties.ST);
         setSelectState(feature.properties.ST);
         map.fitBounds(layer.getBounds(), { maxZoom: 12 });
-      },
+      } else {
+        // Clicked on the same state, reset the color
+        layer.setStyle({
+          fillColor: "#3551a4",
+          fillOpacity: '1'
+        });
+        setPreviouslyClickedState(null);
+        setSelectState(null);
+      }
+    },
   });
 
       if (feature.properties.ST === "Tanintharyi") {
@@ -141,11 +179,19 @@ const DataMap = () => {
         <SetBounds geoJsonData={myanmarGeoJSON} selectState={selectState}
         setSelectState={setSelectState} 
          />
+         {markerData.map((marker, index) => (
+        <Marker key={index} position={marker.position} icon={marker.icon}>
+          <Popup>{marker.popupText}</Popup>
+        </Marker>
+      ))}
       </MapContainer>
-      {/* Bar Chart */}
-      {/* <div className="w-1/2 h-[100px]">
+      {/* Charts */}
+      <div className="w-1/2 h-[100px]">
       <HorizonBarChart/>
-      </div> */}
+      </div>
+      <div>
+      <LineChart/>
+      </div>
     </div>
     </section>
   );

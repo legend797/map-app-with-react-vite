@@ -14,6 +14,7 @@ import markerData from './../../assets/markerData';
 // Chart
 import HorizonBarChart from "./BarChart";
 import LineChart from "./LineChart";
+import RadarChartComponent from "./RadarChartComponent";
 
 
 
@@ -174,7 +175,7 @@ const DataMap = () => {
       id='leaflet-container'
         zoom={10}
         {...zoomPropperties}
-        className=" h-[60vh] sm:h-[80vh] w-1/3 flex justify-center items-center"
+        className=" h-[60vh] sm:h-[80vh] w-2/3 flex justify-center items-center"
       >
         <SetBounds geoJsonData={myanmarGeoJSON} selectState={selectState}
         setSelectState={setSelectState} 
@@ -192,7 +193,12 @@ const DataMap = () => {
       <div>
       <LineChart/>
       </div>
+      
     </div>
+
+    <div className="w-[355px] h-[300px] bg-[#3551a4]">
+        <RadarChartComponent/>
+      </div>
     </section>
   );
 };

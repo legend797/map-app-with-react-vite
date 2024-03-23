@@ -18,7 +18,7 @@ ChartJS.register(
   Legend
 );
 
-const labels = ["January", "February", "March", "April", "May"];
+const labels = ["AirStrike", "Armed Clashes", "Massacre", "Casualty", "Arrest"];
 const barColors = ["#FF775D", "#FFB45D", "#8B5DFF", "#70E457", "#FF5DBC"];
 
 export const data = {
@@ -26,7 +26,7 @@ export const data = {
   datasets: [
     {
       label: '',
-      data: labels.map(() => 10),
+      data: labels.map(() => 50),
 
       backgroundColor: labels.map((_, index) => barColors[index]),
     },

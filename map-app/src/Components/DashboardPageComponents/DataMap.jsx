@@ -1,205 +1,322 @@
-
 import "../DashboardPageComponents/DataMap.css";
 
 import React, { useState, useEffect, useRef } from "react";
 import L from "leaflet";
-import { GeoJSON, MapContainer, useMap, TileLayer,Marker,Popup } from "react-leaflet";
-import myanmarGeoJSON from './../../assets/state_region.json';
+import {
+	GeoJSON,
+	MapContainer,
+	useMap,
+	TileLayer,
+	Marker,
+	Popup,
+} from "react-leaflet";
+import myanmarGeoJSON from "./../../assets/state_region.json";
 import townshipGeoJSON from "./../../assets/township2.json";
 import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
 
+import markerData from "./../../assets/markerData";
 
-import markerData from './../../assets/markerData';
+// const SetBounds = ({ geoJsonData, selectState, setSelectState }) => {
+// 	const [highlightedState, setHighlightedState] = useState(null);
 
-// Chart
-import HorizonBarChart from "./BarChart";
-import LineChart from "./LineChart";
-import RadarChartComponent from "./RadarChartComponent";
+// 	const map = useMap();
 
+// 	const onEachFeature = (feature, layer) => {
+// 		if (feature.properties && feature.properties.ST) {
+// 			// Add hover event listener
+// 			layer.on({
+// 				mouseover: () => {
+// 					layer.setStyle({
+// 						fillColor: "#c40000",
+// 						fillOpacity: "0.4",
+// 					});
+// 				},
+// 				mouseout: () => {
+// 					if (highlightedState !== feature.properties.ST) {
+// 						layer.setStyle({
+// 							fillColor: "#3551a4",
+// 							fillOpacity: "1",
+// 						});
+// 					}
+// 				},
+// 				click: () => {
+// 					if (highlightedState === feature.properties.ST) {
+// 						// Clicked on the same state, reset the color
+// 						layer.setStyle({
+// 							fillColor: "#3551a4",
+// 							fillOpacity: "1",
+// 						});
+// 						setHighlightedState(null);
+// 						setSelectState(null);
+// 					} else {
+// 						// Reset the previously highlighted state's color
+// 						if (highlightedState) {
+// 							map.eachLayer((layer) => {
+// 								if (
+// 									layer.feature &&
+// 									layer.feature.properties.ST === highlightedState
+// 								) {
+// 									layer.setStyle({
+// 										fillColor: "#3551a4",
+// 										fillOpacity: "1",
+// 									});
+// 								}
+// 							});
+// 						}
 
+// 						// Highlight the newly clicked state
+// 						layer.setStyle({
+// 							fillColor: "#ff0000",
+// 							fillOpacity: "0.5",
+// 						});
+// 						setHighlightedState(feature.properties.ST);
+// 						setSelectState(feature.properties.ST);
+// 						map.fitBounds(layer.getBounds(), { maxZoom: 10 });
+// 					}
+// 				},
+// 			});
 
+// 			// Add tooltips for specific states
+// 			if (feature.properties.ST === "Tanintharyi") {
+// 				L.tooltip({
+// 					permanent: true,
+// 					direction: "center",
+// 					className: "map-label",
+// 				})
+// 					.setLatLng([12.0825, 98.6586])
+// 					.setContent("Tanintharyi")
+// 					.addTo(map);
+// 			} else if (feature.properties.ST === "Yangon") {
+// 				L.tooltip({
+// 					permanent: true,
+// 					direction: "center",
+// 					className: "map-label",
+// 				})
+// 					.setLatLng([16.8661, 96.1951])
+// 					.setContent("Yangon")
+// 					.addTo(map);
+// 			} else {
+// 				layer
+// 					.bindTooltip(feature.properties.ST, {
+// 						permanent: true,
+// 						direction: "center",
+// 						className: "map-label",
+// 					})
+// 					.openTooltip();
+// 			}
+// 		}
+// 	};
 
+// 	useEffect(() => {
+// 		const layer = new L.GeoJSON(geoJsonData, {
+// 			onEachFeature,
+// 		});
 
+// 		const bounds = layer.getBounds();
+// 		map.fitBounds(bounds);
+// 		map.setMaxZoom(16);
+// 		map.setMinZoom(4);
+// 	}, [map, geoJsonData]);
 
-const SetBounds = ({ geoJsonData ,selectState,setSelectState}) => {
-    
+// 	return (
+// 		<GeoJSON
+// 			data={geoJsonData}
+// 			onEachFeature={onEachFeature}
+// 			style={{
+// 				fillColor: "#3551a4",
+// 				fillOpacity: "1",
+// 				color: "#83b4d4",
+// 				weight: "1",
+// 			}}
+// 		/>
+// 	);
+// };
 
-  const [previouslyClickedState, setPreviouslyClickedState] = useState(null);
+const SetBounds = ({ geoJsonData, selectState, setSelectState }) => {
+	const [highlightedState, setHighlightedState] = useState(null);
+	const [initialBounds, setInitialBounds] = useState(null);
   
-    const map = useMap();
+	const map = useMap();
   
-
+	const onEachFeature = (feature, layer) => {
+	  if (feature.properties && feature.properties.ST) {
+		// Add hover event listener
+		layer.on({
+		  mouseover: () => {
+			layer.setStyle({
+			  fillColor: "#c40000",
+			  fillOpacity: "0.4",
+			});
+		  },
+		  mouseout: () => {
+			if (highlightedState !== feature.properties.ST) {
+			  layer.setStyle({
+				fillColor: "#3551a4",
+				fillOpacity: "1",
+			  });
+			 
+			}
+			else{
+				layer.setStyle({
+					fillColor:'#ff0000',
+					fillOpacity:'0.5'
+				})
+			}
+		  },
+		  click: () => {
+			if (highlightedState === feature.properties.ST) {
+			  // Clicked on the same state, reset the color
+			  layer.setStyle({
+				fillColor: "#3551a4",
+				fillOpacity: "1",
+			  });
+			  setHighlightedState(null);
+			  setSelectState(null);
+			  map.fitBounds(initialBounds);
+			} else {
+			  // Reset the previously highlighted state's color
+			  if (highlightedState) {
+				map.eachLayer((layer) => {
+				  if (
+					layer.feature &&
+					layer.feature.properties.ST === highlightedState
+				  ) {
+					layer.setStyle({
+					  fillColor: "#3551a4",
+					  fillOpacity: "1",
+					});
+				  }
+				});
+			  }
   
-  const onEachFeature = (feature, layer) => {
-    if (feature.properties && feature.properties.ST) {
-   // Add hover event listener
-   layer.on({
-    mouseover: () => {
-      layer.setStyle({
-        fillColor: "#c40000",
-        // Change the fill color on hover
-      });
-    },
-    mouseout: () => {
-      layer.setStyle({
-        fillColor:"#3551a4",
-        fillOpacity:'1' // Reset the fill color on mouse out
-      });
-    },
-    // click: () => {
-       
-    //     setSelectState(feature.properties.ST);
-    //     map.fitBounds(layer.getBounds(), { maxZoom: 9 });
-    //     console.log('selectState',selectState)
-    //   },
-    click: () => {
-      if (previouslyClickedState !== feature.properties.ST) {
-        if (previouslyClickedState) {
-          // Reset the previously clicked state's color
-          map.eachLayer(layer => {
-            if (layer.feature && layer.feature.properties.ST === previouslyClickedState) {
-              layer.setStyle({
-                fillColor: "#3551a4",
-                fillOpacity: '1'
-              });
-            }
-          });
-        }
-
-        // Highlight the newly clicked state
-        layer.setStyle({
-          fillColor: "#ff0000",
-          fillOpacity: '1'
-        });
-        setPreviouslyClickedState(feature.properties.ST);
-        setSelectState(feature.properties.ST);
-        map.fitBounds(layer.getBounds(), { maxZoom: 12 });
-      } else {
-        // Clicked on the same state, reset the color
-        layer.setStyle({
-          fillColor: "#3551a4",
-          fillOpacity: '1'
-        });
-        setPreviouslyClickedState(null);
-        setSelectState(null);
-      }
-    },
-  });
-
-      if (feature.properties.ST === "Tanintharyi") {
-        L.tooltip({
-          permanent: true,
-          direction: "center",
-          className: "map-label",
-        })
-          .setLatLng([12.0825, 98.6586])
-          .setContent("Tanintharyi")
-          .addTo(map);
-      } else if (feature.properties.ST === "Yangon") {
-        L.tooltip({
-          permanent: true,
-          direction: "center",
-          className: "map-label",
-        })
-          .setLatLng([16.8661, 96.1951])
-          .setContent("Yangon")
-          .addTo(map);
-      } else {
-        layer
-          .bindTooltip(feature.properties.ST, {
-            permanent: true,
-            direction: "center",
-            className: "map-label",
-            
-          })
-          .openTooltip();
-      }
-    }
+			  // Highlight the newly clicked state
+			  layer.setStyle({
+				fillColor: "#ff0000",
+				fillOpacity: "0.5",
+			  });
+			  setHighlightedState(feature.properties.ST);
+			  setSelectState(feature.properties.ST);
+			  map.fitBounds(layer.getBounds(), { maxZoom: 10 });
+			}
+		  },
+		});
+  
+		// Add tooltips for specific states
+		if (feature.properties.ST === "Tanintharyi") {
+		  L.tooltip({
+			permanent: true,
+			direction: "center",
+			className: "map-label",
+		  })
+			.setLatLng([12.0825, 98.6586])
+			.setContent("Tanintharyi")
+			.addTo(map);
+		} else if (feature.properties.ST === "Yangon") {
+		  L.tooltip({
+			permanent: true,
+			direction: "center",
+			className: "map-label",
+		  })
+			.setLatLng([16.8661, 96.1951])
+			.setContent("Yangon")
+			.addTo(map);
+		} else {
+		  layer
+			.bindTooltip(feature.properties.ST, {
+			  permanent: true,
+			  direction: "center",
+			  className: "map-label",
+			})
+			.openTooltip();
+		}
+	  }
+	};
+  
+	useEffect(() => {
+	  const layer = new L.GeoJSON(geoJsonData, {
+		onEachFeature,
+	  });
+  
+	  const bounds = layer.getBounds();
+	  map.fitBounds(bounds);
+	  setInitialBounds(bounds);
+	  map.setMaxZoom(16);
+	  map.setMinZoom(4);
+	}, [map, geoJsonData]);
+  
+	const resetZoom = () => {
+	  map.fitBounds(initialBounds);
+	  setHighlightedState(null);
+	  setSelectState(null);
+	};
+  
+	return (
+	  <div>
+		<GeoJSON
+		  data={geoJsonData}
+		  onEachFeature={onEachFeature}
+		  style={{
+			fillColor: "#3551a4",
+			fillOpacity: "1",
+			color: "#83b4d4",
+			weight: "1",
+		  }}
+		/>
+		<button
+		  className="reset-zoom-button"
+		  onClick={resetZoom}
+		  style={{
+			position: "absolute",
+			top: "10px",
+			right: "10px",
+			zIndex: 1000,
+			backgroundColor: "#fff",
+			border: "1px solid #ccc",
+			padding: "5px 10px",
+			cursor: "pointer",
+		  }}
+		>
+		  Reset Zoom
+		</button>
+	  </div>
+	);
   };
-  useEffect(() => {
-    const layer = new L.GeoJSON(geoJsonData, {
-      
-      onEachFeature,
-    });
-
-    const bounds = layer.getBounds();
-    map.fitBounds(bounds);
-    map.setMaxZoom(16);
-    map.setMinZoom(4);
-  }, [map, geoJsonData]);
-
-  return (
-   
-    <GeoJSON
-      data={geoJsonData}
-      onEachFeature={onEachFeature}
-      style={{
-        fillColor: "#3551a4",
-        fillOpacity: "1",
-        color: "#83b4d4",
-        weight: "1",
-      }}
-    />
-    
-    
-  ); 
-};
 
 const DataMap = () => {
-    const [selectState,setSelectState] = useState(null);
-  
+	const [selectState, setSelectState] = useState(null);
 
-  const zoomPropperties = {
-    doubleClickZoom: true,
-    closePopupOnClick: true,
-    dragging: false,
-    zoomSnap: true,
-    zoomDelta: true,
-    trackResize: false,
-    touchZoom: false,
-    scrollWheelZoom: false,
-  };
+	const zoomPropperties = {
+		doubleClickZoom: true,
+		closePopupOnClick: true,
+		dragging: true,
+		zoomSnap: true,
+		zoomDelta: true,
+		trackResize: false,
+		touchZoom: false,
+		scrollWheelZoom: false,
+	};
 
-  return (
-    
-    <section className=" pt-[15vh] px-5 sm:px-12 md:px-32 w-full pb-12">
-         <div>
-       
-         {selectState && (
-        <h2 className="text-2xl text-gray-500 font-bold mb-4"> {selectState}</h2>
-      )}
-      </div>
-    <div className="flex justify-start items-center  gap-[30px]">
-        
-      <MapContainer
-      id='leaflet-container'
-        zoom={10}
-        {...zoomPropperties}
-        className=" h-[60vh] sm:h-[80vh] w-2/3 flex justify-center items-center"
-      >
-        <SetBounds geoJsonData={myanmarGeoJSON} selectState={selectState}
-        setSelectState={setSelectState} 
-         />
-         {markerData.map((marker, index) => (
-        <Marker key={index} position={marker.position} icon={marker.icon}>
-          <Popup>{marker.popupText}</Popup>
-        </Marker>
-      ))}
-      </MapContainer>
-      {/* Charts */}
-      <div className="w-1/2 h-[100px]">
-      <HorizonBarChart/>
-      </div>
-      <div>
-      <LineChart/>
-      </div>
-      
-    </div>
-
-    <div className="w-[355px] h-[300px] bg-[#3551a4]">
-        <RadarChartComponent/>
-      </div>
-    </section>
-  );
+	return (
+		<div className=" ">
+			<MapContainer
+				id="leaflet-container"
+				zoom={10}
+				{...zoomPropperties}
+				className="border-2 rounded-[8px] w-[1000px] h-[480px]  flex justify-center items-center"
+			>
+				<SetBounds
+					geoJsonData={myanmarGeoJSON}
+					selectState={selectState}
+					setSelectState={setSelectState}
+				/>
+				{markerData.map((marker, index) => (
+					<Marker key={index} position={marker.position} icon={marker.icon}>
+						<Popup>{marker.popupText}</Popup>
+					</Marker>
+				))}
+			</MapContainer>
+		</div>
+	);
 };
+
 export default DataMap;

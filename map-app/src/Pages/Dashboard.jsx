@@ -121,7 +121,7 @@ import HorizonBarChart from "../Components/DashboardPageComponents/Lists/BarChar
 import LineChart from "../Components/DashboardPageComponents/Lists/LineChart";
 
 import DataMap3 from "../Components/DashboardPageComponents/DataMap3";
-import { ZoomControl } from "react-leaflet";
+// import { ZoomControl } from "react-leaflet";
 
 const Dashboard = () => {
   let largeComponentWidth = "1000px";

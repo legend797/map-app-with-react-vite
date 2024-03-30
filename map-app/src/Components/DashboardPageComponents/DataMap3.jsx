@@ -4,7 +4,7 @@ import L, { tooltip } from "leaflet";
 import { GeoJSON, MapContainer, useMap, Marker, Popup } from "react-leaflet";
 import myanmarGeoJSON from "./../../assets/state_region.json";
 import townshipGeoJSON from "./../../assets/township2.json";
-import cityGeoJSON from './../../assets/cities.json';
+import cityGeoJSON from "./../../assets/cities.json";
 import "leaflet/dist/leaflet.css";
 import markerData from "./../../assets/markerData";
 
@@ -21,205 +21,10 @@ const SetBounds = () => {
     color: "#ff0000",
     weight: "3",
   };
-  // const [showStateLayer, setShowStateLayer] = useState(true);
-  // const [showTownshipLayer, setShowTownshipLayer] = useState(false);
-  // const [townshipTooltips, setTownshipTooltips] = useState([]);
-  // const [tooltipLayers, setTooltipLayers] = useState([]);
-  // const [add, setAdd] = useState(1);
-  // const [geo, setGeo] = useState(myanmarGeoJSON)
-
-  // const onEachFeature = (feature, layer) => {
-  // 	if (feature.properties && feature.properties.ST) {
-  // 		layer.on({
-  // 			mouseover: () => {
-  // 				layer.setStyle(highlightedStyle);
-  // 			},
-  // 			mouseout: () => {
-  // 				layer.setStyle(defaultStyle);
-  // 			},
-  // 			click: () => {
-  // 				layer.setStyle(highlightedStyle);
-  // 				map.fitBounds(layer.getBounds(), { maxZoom: 12 });
-  // 			},
-  // 		});
-
-  // 		if (feature.properties.ST === "Tanintharyi") {
-  // 			L.tooltip({
-  // 				permanent: true,
-  // 				direction: "center",
-  // 				className: "map-label",
-  // 			})
-  // 				.setLatLng([12.0825, 98.6586])
-  // 				.setContent("Tanintharyi")
-  // 				.addTo(map);
-  // 		} else if (feature.properties.ST === "Yangon") {
-  // 			L.tooltip({
-  // 				permanent: true,
-  // 				direction: "center",
-  // 				className: "map-label",
-  // 			})
-  // 				.setLatLng([16.8661, 96.1951])
-  // 				.setContent("Yangon")
-  // 				.addTo(map);
-  // 		} else {
-  // 			layer
-  // 				.bindTooltip(feature.properties.ST, {
-  // 					permanent: true,
-  // 					direction: "center",
-  // 					className: "map-label",
-  // 				})
-  // 				.openTooltip();
-  // 		}
-  // 	}
-  // };
-
-  // const onEachFeatureTownship = (feature, layer) => {
-  // 	if (feature.properties && feature.properties.ts_eng) {
-  // 		const townshipName = feature.properties.ts_eng;
-  // 		const centroid = layer.getBounds().getCenter();
-  // 		layer.on({
-  // 			mouseover: () => {
-  // 				layer.setStyle(highlightedStyle);
-  // 			},
-  // 			mouseout: () => {
-  // 				layer.setStyle(
-  // 				defaultStyle
-  // 				);
-  // 			},
-  // 			click: () => {
-  // 				layer.setStyle(highlightedStyle);
-  // 				map.fitBounds(layer.getBounds(), { maxZoom: 8 });
-  // 			},
-  // 		});
-
-  // 		const tooltip = L.tooltip({
-  // 			permanent: true,
-  // 			direction: "center",
-  // 			className: "map-label",
-  // 		})
-  // 			.setLatLng(centroid)
-  // 			.setContent(townshipName)
-  // 			.addTo(map);
-
-  // 		setTownshipTooltips((prevTownshipTooltips) => {
-  // 			const i = [...prevTownshipTooltips, tooltip]
-  // 			console.log("tooltip", tooltip, "updated array", i)
-  // 			return i
-  // 		});
-  // 	} else {
-  // 		layer
-  // 			.bindTooltip("Township Name Not Available", {
-  // 				permanent: true,
-  // 				direction: "center",
-  // 				className: "map-label",
-  // 			})
-  // 			.openTooltip();
-  // 	}
-  // };
 
   const resetZoom = () => {
     map.fitBounds(initialBounds);
-    // Remove all state tooltips
-    // tooltipLayers.forEach((tooltip) => tooltip.remove());
-    // setTooltipLayers([]);
-    // Remove all township tooltips
-    // townshipTooltips.forEach((tooltip) => tooltip.remove());
-    // setTownshipTooltips([]);
   };
-  // useEffect(() => {
-  // 	const stateLayer = new L.GeoJSON(myanmarGeoJSON, { onEachFeature });
-  // 	const townshipLayer = new L.GeoJSON(townshipGeoJSON, {
-  // 		onEachFeatureTownship,
-  // 	});
-  // 	const bounds = stateLayer.getBounds();
-  // 	map.fitBounds(bounds);
-  // 	setInitialBounds(bounds);
-  // 	map.setMaxZoom(16);
-  // 	map.setMinZoom(4);
-  // 	stateLayer.addTo(map);
-
-  // 	const handleZoomStart = () => {
-  // 		const currentZoom = map.getZoom();
-
-  // 		// Remove all t	ownship tooltips before zooming
-  // 		// tooltipLayers.forEach((tooltip) => tooltip.remove());
-  // 		// setTooltipLayers([]);
-  // 		// const currentZoom = map.getZoom();
-
-  // 		// if (currentZoom < 7) {
-
-  // 		// 	setShowStateLayer(true);
-  // 		// 	setShowTownshipLayer(false);
-  // 		// 	townshipLayer.removeFrom(map);
-  // 		// 	stateLayer.addTo(map);
-  // 		// 	// Remove all township tooltips
-  // 		// 	townshipTooltips.forEach((tooltip) => tooltip.remove());
-  // 		// 	console.log('townships name',tooltipTooltips)
-  // 		// 	setTownshipTooltips([]);
-  // 		// 	// Remove all state tooltips
-  // 		// 	tooltipLayers.forEach((tooltip) => tooltip.remove());
-  // 		// 	setTooltipLayers([]);
-  // 		// } else {
-  // 		// 	setShowStateLayer(false);
-  // 		// 	setShowTownshipLayer(true);
-  // 		// 	stateLayer.removeFrom(map);
-  // 		// 	townshipLayer.addTo(map);
-
-  // 		// }
-  // 	};
-
-  // 	const handleZoomEnd = () => {
-  // 		console.log('zoom end')
-  // 		const currentZoom = map.getZoom();
-  // 			console.log("townshipLayer", townshipLayer._mapToAdd)
-  // 			console.log("current zoom", currentZoom)
-
-  // 		if (currentZoom < 7 && townshipLayer._mapToAdd) {
-  // 			// console.log("here")
-  // 			// setShowStateLayer(true);
-  // 			console.log("here")
-  // 			// townshipLayer.removeFrom(map);
-  // // Explicitly remove each township tooltip
-  // console.log("townshipTooltips", townshipTooltips)
-  // 		townshipTooltips.forEach((tooltip) => {
-  // 			console.log(tooltip)
-
-  //   				console.log('Removing tooltip:', tooltip); // Debug log
-  //   				tooltip.remove();
-  // 			});
-  // // setTownshipTooltips([]);
-  // 			// // Remove all township tooltips
-  // 			// townshipTooltips.forEach((tooltip) => tooltip.remove());
-  // 			// console.log('townships name',townshipTooltips)
-  // 			// // setTownshipTooltips([]);
-  // 			// stateLayer.addTo(map);
-  // 			map.removeLayer(townshipLayer)
-
-  // 			// console.log("TownshipTooltips", townshipTooltips)
-  // 			// // Remove all state tooltips
-  // 			// tooltipLayers.forEach((tooltip) => tooltip.remove());
-
-  // 		// 	setTooltipLayers([]);
-  // 		} else if(currentZoom >7) {
-  // 			console.log("greater than 7")
-  // 			// setShowStateLayer(false)	;
-  // 			setShowTownshipLayer(true);
-  // 			// stateLayer.removeFrom(map);
-  // 			townshipLayer.addTo(map);
-
-  // 			// setGeo(townshipGeoJSON)
-
-  // 		}
-  // 	};
-
-  // 	map.on("zoomend", handleZoomEnd);
-  // 	map.on("zoomstart", handleZoomStart);
-
-  // 	return () => {
-  // 		map.off("zoomstart", handleZoomStart);
-  // 		map.off("zoomend", handleZoomEnd);
-  // 	};
-  // }, [map]);
 
   useEffect(() => {
     // Create layer groups for states and townships
@@ -239,62 +44,59 @@ const SetBounds = () => {
               layer.setStyle(defaultStyle);
             },
             click: () => {
-              layer.setStyle(defaultStyle);
-              map.fitBounds(layer.getBounds(), { maxZoom: 12 });
+              
+              map.fitBounds(layer.getBounds());
             },
           });
 
           // Attach tooltips or any interactions here
           if (feature.properties.ST === "Tanintharyi") {
-            			L.tooltip({
-            				permanent: true,
-            				direction: "center",
-            				className: "map-label",
-            			})
-            				.setLatLng([12.0825, 98.6586])
-            				.setContent("Tanintharyi")
-            				.addTo(map);
-            		} else if (feature.properties.ST === "Yangon") {
-            			L.tooltip({
-            				permanent: true,
-            				direction: "center",
-            				className: "map-label",
-            			})
-            				.setLatLng([16.8661, 96.1951])
-            				.setContent("Yangon")
-            				.addTo(map);
-            		} else {
-            			layer
-            				.bindTooltip(feature.properties.ST, {
-            					permanent: true,
-            					direction: "center",
-            					className: "map-label",
-            				})
-            				// .openTooltip();
-            		}
+            L.tooltip({
+              permanent: true,
+              direction: "center",
+              className: "map-label",
+            })
+              .setLatLng([12.0825, 98.6586])
+              .setContent("Tanintharyi")
+              .addTo(map);
+          } else if (feature.properties.ST === "Yangon") {
+            L.tooltip({
+              permanent: true,
+              direction: "center",
+              className: "map-label",
+            })
+              .setLatLng([16.8661, 96.1951])
+              .setContent("Yangon")
+              .addTo(map);
+          } else {
+            layer.bindTooltip(feature.properties.ST, {
+              permanent: true,
+              direction: "center",
+              className: "map-label",
+            });
+            // .openTooltip();
+          }
           layer.addTo(stateLayerGroup); // Add each layer to the state layer group
         }
       },
-});
+    });
 
- // Define city layer with onEachFeature logic
- const cityLayer = new L.GeoJSON(cityGeoJSON,{
-  onEachFeature: (feature, layer) => {
-    
-      
+    // Define city layer with onEachFeature logic
+    const cityLayer = new L.GeoJSON(cityGeoJSON, {
+      onEachFeature: (feature, layer) => {
+        // Attach tooltips or any interactions here
+        layer.bindTooltip(feature.properties.NAME, {
+          permanent: true,
+          direction: "center",
+          className: "my-custom-tooltip ",
+        });
+       
+        layer.addTo(cityLayerGroup); // Add each layer to the township layer group
+      },
+  
+     
+    });
 
-      // Attach tooltips or any interactions here
-      layer.bindTooltip(feature.properties.NAME, {
-        permanent: true,
-        direction: "center",
-        className: "my-custom-tooltip",
-      });
-      layer.addTo(cityLayerGroup); // Add each layer to the township layer group
-    
-  },
- });
-
-    
     // Define township layer with onEachFeatureTownship logic
     const townshipLayer = new L.GeoJSON(townshipGeoJSON, {
       onEachFeature: (feature, layer) => {
@@ -307,8 +109,8 @@ const SetBounds = () => {
               layer.setStyle(defaultStyle);
             },
             click: () => {
-              layer.setStyle(defaultStyle);
-              map.fitBounds(layer.getBounds(), { maxZoom: 10 });
+              
+              map.fitBounds(layer.getBounds());
             },
           });
 
@@ -332,26 +134,6 @@ const SetBounds = () => {
     stateLayer.setStyle(defaultStyle);
     cityLayer.setStyle(defaultStyle);
     townshipLayer.setStyle(defaultStyle);
-
-    // Zoom event handling
-    // const handleZoomEnd = () => {
-    //   const currentZoom = map.getZoom();
-    //   console.log("Current Zoom:", currentZoom);
-
-    //   if (currentZoom < 7) {
-    //     if (!map.hasLayer(stateLayerGroup)) {
-    //       map.addLayer(stateLayerGroup);
-    //     }
-    //     map.removeLayer(townshipLayerGroup);
-    //   } else {
-    //     if (!map.hasLayer(townshipLayerGroup)) {
-    //       map.addLayer(townshipLayerGroup);
-    //     }
-    //     map.removeLayer(stateLayer);
-    //   }
-    // };
-
-    // map.on("zoomend", handleZoomEnd);
 
     const handleZoomEnd = () => {
       const currentZoom = map.getZoom();
@@ -389,7 +171,7 @@ const SetBounds = () => {
       }
     };
 
-    map.on('zoomend', handleZoomEnd);
+    map.on("zoomend", handleZoomEnd);
 
     // Clean up on component unmount
     return () => {
@@ -400,11 +182,8 @@ const SetBounds = () => {
     };
   }, [map]);
 
-  
   return (
     <div>
-      
-
       <button
         className="reset-zoom-button"
         onClick={resetZoom}
@@ -426,8 +205,8 @@ const SetBounds = () => {
 };
 
 const DataMap3 = ({ width, height, zoom }) => {
-  if(zoom === undefined){
-    zoom=true
+  if (zoom === undefined) {
+    zoom = true;
   }
   const zoomPropperties = {
     doubleClickZoom: true,

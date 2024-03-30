@@ -4,9 +4,9 @@
 }
 
 .leaflet-tooltip.map-label {
-    background: transparent;
+    background: transparent; 
     border: none;
-    box-shadow: none;
+     box-shadow: none; 
     color: #e3e3e3; /* Text color */
   }
 
@@ -14,8 +14,11 @@
     background-color:rgba(255,0,0,0.0);
     border:none;
     box-shadow: none;
+    color: #e3e3e3;
     
   }
+  
+  
 
   .leaflet-tooltip.my-custom-tooltip::before, 
 .leaflet-tooltip::before {
@@ -23,3 +26,11 @@
     background: transparent !important;
     content: none !important;
 }
+
+
+/* citylayer marker css */
+
+.leaflet-marker-icon, .leaflet-marker-shadow {
+  
+  display: none;
+  }

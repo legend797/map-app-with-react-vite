@@ -4,134 +4,34 @@ import HorizonBarChart from "../Components/DashboardPageComponents/Lists/BarChar
 import LineChart from "../Components/DashboardPageComponents/Lists/LineChart";
 
 import DataMap3 from "../Components/DashboardPageComponents/DataMap3";
-import DataTable2 from "../Components/DashboardPageComponents/DataTable2";
+// import DataTable2 from "../Components/DashboardPageComponents/DataTable2";
+// Icons
 import Cicon from "./../assets/calendar.svg";
 import M from "./../assets/map.svg";
 import Data from "../Components/DashboardPageComponents/Data";
-import Dates from "../Components/DashboardPageComponents/Lists/Dates";
+import Max from "../assets/maximize.svg";
+import Min from "../assets/minimize.svg";
+import L from '../assets/left-arrow.svg';
+import R from '../assets/right-arrow.svg';
+
+// Slides
+// import { Slide } from 'react-slideshow-image';
+// import 'react-slideshow-image/dist/styles.css';
+
+// import Dates from "../Components/DashboardPageComponents/Lists/Dates";
 import Dates2 from "../Components/DashboardPageComponents/Lists/Dates2";
 // import { ZoomControl } from "react-leaflet";
 
 const Dashboard2 = () => {
-  //   let largeComponentWidth = "1000px";
-  //   let largeComponentHeight = "480px";
-  //   let smallComponentWidth = "240px";
-  //   let smallComponentHeight = "120px";
+  const [activeChart, setActiveChart] = useState(0); // 0, 1, or 2 for the three charts
+  const [isFullWidth, setIsFullWidth] = useState(false);
 
-  //   const [one, setOne] = useState(<LineChart />);
-  //   const [two, setTwo] = useState(<LineChart />);
-  //   const [three, setThree] = useState(<div className="w-[220px] h-[100px]"><HorizonBarChart  /></div>);
-  //   //<DataMap3 width={`${largeComponentWidth}`} height={`${largeComponentHeight}`}/>
-  //   const [four, setFour] = useState(
-  //     <DataMap3
-  //       width={`${largeComponentWidth}`}
-  //       height={`${largeComponentHeight}`}
-  //     />
-  //   );
-  //   const DataMap = <DataMap3 />;
-  // console.log(DataMap)
-  // console.log(one.type)
-  // if (one.type.name === DataMap.type.name ){
-  // 	setOne(<DataMap3 width={`${smallComponentWidth}`} height={`${smallComponentHeight}`}/>)
-  // }
-  // if (four.type.name === DataMap.type.name){
-  // 	console.log("four");
-  // 	setFour(<DataMap3 width={`${largeComponentWidth}`} height={`${largeComponentHeight}`}/>)
-  // }
+  const handleChartClick = (chartIndex) => {
+    setActiveChart(chartIndex);
+    setIsFullWidth(!isFullWidth);
+  };
 
   return (
-    // <section className="bg-[#132442] pt-[8vh] px-[40px] w-full pb-12">
-    //   <div className="flex justify-between gap-x-5">
-    //     {/* Left Container */}
-    //     <div className="w-[1000px]">
-    //       <div className="mb-[8px]  ">
-    //         {/* Top main  container */}
-    //         <div className="w-full h-auto flex justify-between items-center ">
-    //           {/* Top no1 container */}
-    //           <div
-    //             onClick={() => {
-    //               setOne(four);
-    //               setFour(one);
-    //             }}
-    //             className={`w-${smallComponentWidth} h-${smallComponentHeight}`}
-    //           >
-    //             {console.log(one.type.name)}
-
-    //             {one.type.name === DataMap.type.name ? (
-    //               <>
-    //                 <DataMap3
-    //                   width={`${smallComponentWidth}`}
-    //                   height={`${smallComponentHeight}`}
-    //                   zoom={false}
-    //                 />
-    //               </>
-    //             ) : (
-    //               <>
-    //                 ${one}
-
-    //               </>
-    //             )}
-    //           </div>
-    //           {/* Top no2 container */}
-    //           <div
-    //             onClick={() => {
-    //               setTwo(four);
-    //               setFour(two);
-    //             }}
-    //             className={`w-${smallComponentWidth} h-${smallComponentHeight}`}
-    //           >
-    //             {two.type.name === DataMap.type.name ? (
-    //               <>
-    //                 <DataMap3
-    //                   width={`${smallComponentWidth}`}
-    //                   height={`${smallComponentHeight}`}
-    //                   zoom={false}
-    //                 />
-    //               </>
-    //             ) : (
-    //               <>
-    //                 ${two}
-
-    //               </>
-    //             )}
-    //           </div>
-    //           {/* Top no3 container */}
-    //           <div
-    //             onClick={() => {
-    //               setThree(four);
-    //               setFour(three);
-    //             }}
-    //             className={`w-${smallComponentWidth} h-${smallComponentHeight} flex justify-end`}
-    //           >
-    //             {three.type.name === DataMap.type.name ? (
-    //               <>
-    //                 <DataMap3
-    //                   width={`${smallComponentWidth}`}
-    //                   height={`${smallComponentHeight}`}
-    //                   zoom={false}
-    //                 />
-    //               </>
-    //             ) : (
-    //               <>
-    //                 ${three}
-    //               </>
-    //             )}
-    //           </div>
-    //         </div>
-    //       </div>
-
-    //       {/* Dynamic container */}
-    //       <div className={`w-${largeComponentWidth} h-${largeComponentHeight}`}>
-    //         {four}
-    //       </div>
-    //     </div>
-
-    //     {/* Right Container */}
-    //     <div className="w1/4">
-    //       <DataTable2/>
-    //     </div>
-    //   </div>
-    // </section>
     <section className="bg-[#010101] pt-[8vh] p-[10px] w-full pb-12">
       <div className="flex justify-center ">
         {/* Left Container */}
@@ -141,25 +41,152 @@ const Dashboard2 = () => {
 
         {/* Parent Right Container */}
         <div className="">
-          {/* Top Right Container */}
-          <div className="bg-[#161616] w-[868px] h-[230px] rounded-md flex justify-center items-center gap-[10px] px-[5px] mb-[16px]">
-            {/* top 1 container */}
-            <div className="w-1/3  p-[5px] flex justify-center">
+          {/*Right Container */}
+
+          <div
+            className={`relative bg-[#161616] w-[868px] h-[230px] rounded-md flex justify-center items-center gap-[10px] px-[20px] mb-[16px]`}
+          >
+            {!isFullWidth && (
+              <>
+                {/*1 container */}
+                <div
+                  className="w-1/3  p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center"
+                  onClick={() => handleChartClick(0)}
+                >
+                  <LineChart />
+                </div>
+                {/*2 container */}
+                <div
+                  className="w-1/3   p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+                  onClick={() => handleChartClick(1)}
+                >
+                  <LineChart />
+                </div>
+                {/* 3 container */}
+                <div
+                  className="w-1/3  p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+                  onClick={() => handleChartClick(2)}
+                >
+                  <HorizonBarChart />
+                </div>
+              </>
+            )}
+            {isFullWidth && (
+              <>
+                <div className="w-[868px] h-[230px] flex justify-center p-[20px]">
+                  <div
+                    className={`chart-transition ${
+                      activeChart === 0 ? "active" : ""
+                    }`}
+                  >
+                    {activeChart === 0 && <LineChart />}
+                  </div>
+                  <div
+                    className={`chart-transition ${
+                      activeChart === 1 ? "active" : ""
+                    }`}
+                  >
+                    {activeChart === 1 && <LineChart />}
+                  </div>
+                  <div
+                    className={`chart-transition ${
+                      activeChart === 2 ? "active" : ""
+                    }`}
+                  >
+                    {activeChart === 2 && <HorizonBarChart />}
+                  </div>
+                </div>
+                <div className="slide-nav">
+                  
+                  <button
+                    onClick={() => setActiveChart((activeChart - 1 + 3) % 3)}
+                    className="slide-nav-arrow left "
+                  >
+                    {/* &lt; */}
+                    <img src={L} className="w-[25px] h-[25px]" />
+                  </button>
+                  
+                  <button
+                    onClick={() => setActiveChart((activeChart + 1) % 3)}
+                    className="slide-nav-arrow right"
+                  >
+                    {/* &gt; */}
+                    <img src={R} className="w-[25px] h-[25px]" />
+                  </button>
+                </div>
+              </>
+            )}
+            <button
+              className="absolute bottom-0  right-4 w-[50px] h-[50px]  font-bold py-2 px-4 rounded"
+              onClick={() => setIsFullWidth(!isFullWidth)}
+            >
+              {isFullWidth ? (
+                <img src={Min} className="w-[25px] h-[25px]" />
+              ) : (
+                <img src={Max} className="w-[25px] h-[25px]" />
+              )}
+            </button>
+          </div>
+
+          {/* <div className="relative">
+      <div className={`main-container bg-[#161616] w-[868px] h-[230px] rounded-md flex justify-center items-center gap-[10px] px-[20px] mb-[16px] ${isFullWidth ? 'full-width' : ''}`}>
+        {!isFullWidth && (
+          <>
+            <div
+              className="w-1/3 p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+              onClick={() => handleChartClick(0)}
+            >
               <LineChart />
             </div>
-            {/* top 2 container */}
-            <div className="w-1/3   p-[5px] flex justify-center">
+            <div
+              className="w-1/3 p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+              onClick={() => handleChartClick(1)}
+            >
               <LineChart />
             </div>
-            {/* top 3 container */}
-            <div className="w-1/3  p-[5px] flex justify-center">
+            <div
+              className="w-1/3 p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+              onClick={() => handleChartClick(2)}
+            >
               <HorizonBarChart />
             </div>
-          </div>
+          </>
+        )}
+        {isFullWidth && (
+          <>
+            <div className="full-width-chart">
+              {activeChart === 0 && <LineChart />}
+              {activeChart === 1 && <LineChart />}
+              {activeChart === 2 && <HorizonBarChart />}
+            </div>
+            <div className="slide-nav">
+              <button
+                onClick={() => setActiveChart((activeChart - 1 + 3) % 3)}
+                className="slide-nav-arrow left"
+              >
+                &lt;
+              </button>
+              <button
+                onClick={() => setActiveChart((activeChart + 1) % 3)}
+                className="slide-nav-arrow right"
+              >
+                &gt;
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+      <button
+        className="toggle-btn absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setIsFullWidth(!isFullWidth)}
+      >
+        {isFullWidth ? 'Show All' : 'Full Width'}
+      </button>
+    </div> */}
 
           {/*Under Right Container  */}
           <div className="bg-[#161616] w-[868px] h-[393px] flex items-center rounded-md px-[20px] py-[10px]">
-            <div className="w-full h-[360px] bg-[#233141] rounded flex justify-between items-center  ">
+            <div className="w-full h-[360px] bg-[#233141] rounded flex justify-between items-center py-[20px] ">
               {/* Inner Left Container */}
               <div className="w-2/5  flex flex-col gap-[16px]   pl-[20px]">
                 <h2 className="text-white">မြန်မာ</h2>
@@ -191,11 +218,10 @@ const Dashboard2 = () => {
                 </div>
               </div>
 
-               {/* Vertical Dashed Line */}
-      <div className="relative w-[1px] h-full bg-gray-300">
-        <div className="absolute  h-full border-dashed border-gray-300"></div>
-      </div>
-
+              {/* Vertical Dashed Line */}
+              <div className="relative w-[1px] h-full bg-gray-300">
+                <div className="absolute  h-full border-dashed border-gray-300"></div>
+              </div>
 
               {/* Inner Right Container */}
               <div className="w-3/5 flex flex-col  gap-[16px]   px-[20px] ">
@@ -223,10 +249,10 @@ const Dashboard2 = () => {
                   </div>
                 </div>
 
-                 {/* Horizontal Dashed Line */}
-        <div className="relative h-[1px] mt-[10px] bg-gray-300">
-          <div className="absolute w-full h-[1px] border-dashed border-gray-300"></div>
-        </div>
+                {/* Horizontal Dashed Line */}
+                <div className="relative h-[1px] mt-[10px] bg-gray-300">
+                  <div className="absolute w-full h-[1px] border-dashed border-gray-300"></div>
+                </div>
 
                 {/* bottom  */}
                 <div className="flex  items-center mt-[10px] gap-[10px]">

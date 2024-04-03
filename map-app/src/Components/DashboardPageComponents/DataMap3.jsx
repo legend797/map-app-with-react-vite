@@ -227,7 +227,7 @@ const DataMap3 = ({ width, height, zoom }) => {
       <MapContainer
         id="leaflet-container"
         {...zoomPropperties}
-        className={`border-2 w-[${width}] h-[${height}] rounded-[8px]  flex justify-center items-center`}
+        className={`border-2 w-[${width}] h-[${height}] rounded-[4px]  flex justify-center items-center`}
       >
         <SetBounds />
         {markerData.map((marker, index) => (

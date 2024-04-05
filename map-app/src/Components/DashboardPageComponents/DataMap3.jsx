@@ -88,12 +88,23 @@ const SetBounds = () => {
         layer.bindTooltip(feature.properties.NAME, {
           permanent: true,
           direction: "center",
-          className: "my-custom-tooltip ",
+          className: "my-custom-tooltip",
+          
         });
        
         layer.addTo(cityLayerGroup); // Add each layer to the township layer group
       },
-  
+      pointToLayer: (feature, latlng) => {
+        // Attach tooltips or any interactions here
+        const layer = L.marker(latlng, {
+          icon: L.divIcon({
+            className: 'custom-city-marker', // Apply a custom CSS class
+            iconSize: [32, 32], // Adjust the size as needed
+          }),
+        });
+        return layer;
+      }
+      
      
     });
 
@@ -120,6 +131,8 @@ const SetBounds = () => {
             direction: "center",
             className: "my-custom-tooltip",
           });
+
+         
           layer.addTo(townshipLayerGroup); // Add each layer to the township layer group
         }
       },

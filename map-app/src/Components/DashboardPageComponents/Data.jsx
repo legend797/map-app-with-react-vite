@@ -26,8 +26,8 @@ const Data = () => {
     <>
       {" "}
       {/* Datas */}
-      <div className=" w-full px-[10px]">
-        {data.map(({ name, number, logo }, index) => (
+      <div className=" w-full h-full flex flex-col justify-center items-center px-[10px] gap-[10px]">
+        {/* {data.map(({ name, number, logo }, index) => (
           <div
             key={index}
             className="flex justify-between items-center space-y-[8px]"
@@ -40,6 +40,21 @@ const Data = () => {
                 <div className="text-[13px] text-white">{name}</div>
               </div>
             </div>
+            <div className="text-[13px] text-white">{number} Cases</div>
+          </div>
+        ))} */}
+
+        {data.map(({ name, number, logo }, index) => (
+          <div
+            key={index}
+            className="w-full hover:bg-gray-600 flex justify-between items-center py-[5px] px-[7px] rounded-md"
+          >
+            <div>
+              <img src={logo} alt="logo" className="w-[15px] h-[15px]" />
+            </div>
+
+            <div className="text-[13px] text-[white]">{name}</div>
+
             <div className="text-[13px] text-white">{number} Cases</div>
           </div>
         ))}

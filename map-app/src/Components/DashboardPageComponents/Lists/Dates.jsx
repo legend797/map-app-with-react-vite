@@ -31,10 +31,10 @@ const Dates = () => {
 
 
   return (
-    <div className="w-[251px] flex gap-[10px]  justify-center items-center">
+    <div className="w-full px-[30px] flex justify-between items-center">
       <div className="mb-[10px] w-[100px]">
         <h3 className="mb-[10px] text-[#DCDCDC] ">Start Date</h3>
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex gap-[15px] justify-between items-center">
           <img src={CalendarIcon} className="w-[20px] h-[20px] text-white" />
 
           <DatePicker
@@ -98,7 +98,7 @@ const Dates = () => {
 
       <div className="mb-[10px] w-[100px]">
         <h3 className="mb-[10px] text-[#DCDCDC] ">End Date</h3>
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex gap-[15px] justify-between items-center">
           <img src={CalendarIcon} className="w-[20px] h-[20px]" />
 
           <DatePicker

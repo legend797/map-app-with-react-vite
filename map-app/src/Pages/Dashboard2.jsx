@@ -41,7 +41,7 @@ const Dashboard2 = () => {
           <>
             {/* Left Container */}
             <div className="bg-[#161616] w-[424px] h-[640px] mr-[16px]">
-              <DataMap3 height={"640px"} />
+              <DataMap3 width={"424px"} height={"640px"} />
             </div>
 
             {/* Parent Right Container */}
@@ -342,7 +342,7 @@ const Dashboard2 = () => {
               <div className="w-full flex justify-between">
                 {/*Bottom Left Container */}
                 <div className="bg-[#161616] w-[456px] h-[600px] mr-[16px]">
-                  <DataMap3 height={"600px"} />
+                  <DataMap3 width={'456px'} height={"600px"} />
                 </div>
 
                 {/*Bottom Right Container  */}

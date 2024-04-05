@@ -99,7 +99,7 @@ const SetBounds = () => {
         const layer = L.marker(latlng, {
           icon: L.divIcon({
             className: 'custom-city-marker', // Apply a custom CSS class
-            iconSize: [32, 32], // Adjust the size as needed
+            iconSize: [0, 0], // Adjust the size as needed
           }),
         });
         return layer;
@@ -150,7 +150,7 @@ const SetBounds = () => {
 
     const handleZoomEnd = () => {
       const currentZoom = map.getZoom();
-
+      console.log('current Zoom:',currentZoom)
       if (currentZoom < 7) {
         if (!map.hasLayer(stateLayerGroup)) {
           map.addLayer(stateLayerGroup);
@@ -217,10 +217,10 @@ const SetBounds = () => {
   );
 };
 
-const DataMap3 = ({ width, height, zoom }) => {
-  if (zoom === undefined) {
-    zoom = true;
-  }
+const DataMap3 = ({ width, height }) => {
+  // if (zoom === undefined) {
+  //   zoom = true;
+  // }
   const zoomPropperties = {
     doubleClickZoom: true,
     closePopupOnClick: true,
@@ -229,7 +229,7 @@ const DataMap3 = ({ width, height, zoom }) => {
     zoomDelta: true,
     trackResize: false,
     touchZoom: false,
-    zoomControl: zoom,
+    zoomControl: true,
     scrollWheelZoom: false,
   };
   console.log;

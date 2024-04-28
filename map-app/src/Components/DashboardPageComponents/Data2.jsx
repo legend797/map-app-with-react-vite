@@ -63,7 +63,7 @@ import L3 from "./../../assets/massacre.svg";
 import L4 from "./../../assets/casualty.svg";
 import L5 from "./../../assets/arrest.svg";
 
-const Data = () => {
+const Data2 = () => {
   const [selectedData, setSelectedData] = useState([]);
 
   const handleDataClick = (data) => {
@@ -100,7 +100,7 @@ const Data = () => {
     <>
       {/* Datas */}
       <div className=" w-full h-full flex flex-col justify-center items-center px-[10px] py-[15px] gap-[5px]">
-        <div className="w-full flex justify-between text-[14px] px-[7px]">
+        <div className="w-full flex justify-between text-[11px] px-[5px]">
           <div className=" text-white text-left">Filter By</div>
           <div>
             {isAllSelected ? (
@@ -123,16 +123,16 @@ const Data = () => {
         {data.map(({ id, name, number, logo }) => (
           <div
             key={id}
-            className={`w-full cursor-pointer border-[1px] border-[#1e1835] flex justify-between items-center py-[5px] px-[7px] rounded-md ${
+            className={`w-full cursor-pointer border-[1px] border-[#1e1835] flex justify-between items-center py-[2px] px-[3px] rounded-md ${
               selectedData.some((d) => d.id === id) ? "bg-[#0f007b]" : ""
             }`}
             onClick={() => handleDataClick({ id, name, number, logo })}
           >
             <div>
-              <img src={logo} alt="logo" className="w-[15px] h-[15px]" />
+              <img src={logo} alt="logo" className="w-[10px] h-[10px]" />
             </div>
-            <div className="text-[13px] text-left text-[white]">{name}</div>
-            <div className="text-[13px] text-left text-white">{number} Cases</div>
+            <div className="text-[10px] text-left text-[white]">{name}</div>
+            <div className="text-[10px] text-left text-white">{number} Cases</div>
             {/* <button
               className="text-white text-[13px]"
               onClick={(e) => e.stopPropagation()}
@@ -146,7 +146,7 @@ const Data = () => {
   );
 };
 
-export default Data;
+export default Data2;
 
 
 

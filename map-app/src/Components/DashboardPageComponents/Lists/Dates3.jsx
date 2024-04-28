@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./Dates.css";
 import CalendarIcon from "./../../../assets/calendar.svg";
 
-const Dates = ({fontSize}) => {
+const Dates3 = ({fontSize}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -33,11 +33,11 @@ const Dates = ({fontSize}) => {
 
 
   return (
-    <div className=" w-full px-[30px] flex justify-between items-center">
+    <div className=" w-full px-[10px] flex flex-col justify-between items-center">
       
       <div className="mb-[10px] w-[100px] ">
         <div className={`mb-[10px] text-[${fontSize}] text-[#DCDCDC] `}>Start Date</div>
-        <div className="w-full flex gap-[15px] justify-between items-center">
+        <div className="w-full flex gap-[5px] justify-between items-center">
           <img src={CalendarIcon} className="w-[20px] h-[20px] text-white" />
 
           <DatePicker
@@ -98,10 +98,10 @@ const Dates = ({fontSize}) => {
           />
         </div>
       </div>
-              <div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
+              {/* <div className="w-[1px] h-full bg-[#4d5eb2]">---</div> */}
       <div className="mb-[10px] w-[100px]">
         <h3 className={`mb-[10px] text-[${fontSize}] text-[#DCDCDC]`} >End Date</h3>
-        <div className="w-full flex gap-[15px] justify-between items-center">
+        <div className="w-full flex gap-[5px] justify-between items-center">
           <img src={CalendarIcon} className="w-[20px] h-[20px]" />
 
           <DatePicker
@@ -169,4 +169,4 @@ const Dates = ({fontSize}) => {
   );
 };
 
-export default Dates;
+export default Dates3;

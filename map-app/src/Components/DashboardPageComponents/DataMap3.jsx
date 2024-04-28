@@ -232,7 +232,7 @@ const DataMap3 = ({ width, height }) => {
     zoomControl: true,
     scrollWheelZoom: false,
   };
-  console.log;
+  
 
   return (
     <div className="">
@@ -240,7 +240,7 @@ const DataMap3 = ({ width, height }) => {
       <MapContainer
         id="leaflet-container"
         {...zoomPropperties}
-        className={`border-2 w-[${width}] h-[${height}] rounded-[4px]  flex justify-center items-center`}
+        className={` border-2 w-[${width}] h-[${height}] rounded-[4px]  flex justify-center items-center`}
       >
         <SetBounds />
         {markerData.map((marker, index) => (
@@ -254,3 +254,4 @@ const DataMap3 = ({ width, height }) => {
 };
 
 export default DataMap3;
+

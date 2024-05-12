@@ -71,7 +71,7 @@ const Dashboard2 = () => {
   };
 
   return (
-    <section className="bg-[#010101]  p-[10px] w-full h-[100vh]">
+    <section className="bg-[#010101]  pt-[15vh] pr-[10px] pl-[10px] pb-[10px] w-full h-auto">
       {/*Mobile Phone Size */}
       <div className=" md:hidden ">
         
@@ -935,13 +935,13 @@ const Dashboard2 = () => {
         {isDefaultLayout ? (
           <>
             {/* Left Container */}
-            <div className="w-[433px] ">
-              <div className="bg-[#161616] max-[433px]:hidden w-[433px] h-[640px] mr-[16px]">
-                <DataMap3 width={"433px"} height={"640px"} />
+            <div className="w-[30%] ">
+              <div className="bg-[#161616] max-[433px]:hidden w-full h-[640px] mr-[16px]">
+                <DataMap3 width={"full"} height={"640px"} />
               </div>
             </div>
             {/* Parent Right Container */}
-            <div className=" w-[875px]">
+            <div className=" w-[70%]">
               {/*Top Right Container */}
 
               <div

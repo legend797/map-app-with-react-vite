@@ -71,7 +71,7 @@ const Dashboard2 = () => {
   };
 
   return (
-    <section className="bg-[#010101]  p-[10px] w-full ">
+    <section className="bg-[#010101]  p-[10px] w-full h-[100vh]">
       {/*Mobile Phone Size */}
       <div className=" md:hidden ">
         
@@ -931,7 +931,7 @@ const Dashboard2 = () => {
       </div>
 
       {/* Laptop and Desktop Size */}
-      <div className="max-xl:hidden w-full h-full flex justify-center gap-[20px] ">
+      <div className="max-xl:hidden w-full h-full flex justify-center items-center gap-[20px] ">
         {isDefaultLayout ? (
           <>
             {/* Left Container */}
@@ -1202,8 +1202,9 @@ const Dashboard2 = () => {
           </>
         ) : (
           <>
+          <div>
             {/* Parent Container */}
-            <div className="max-w-[1329px] flex flex-col justify-center items-center">
+            <div className="w-full h-full flex flex-col justify-center items-center">
               {/* Top Container */}
 
               <div
@@ -1468,6 +1469,8 @@ const Dashboard2 = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
             </div>
           </>
         )}

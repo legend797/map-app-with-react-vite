@@ -31,9 +31,9 @@ const Dates2 = () => {
 
 
   return (
-    <div className="w-[251px] flex flex-col gap-[10px]  justify-center items-center">
-      <div className="mb-[10px] w-[100px]">
-        <h3 className="mb-[10px] text-[#DCDCDC] ">Start Date</h3>
+    <div className="w-[251px] px-[5px] h-full  flex flex-col gap-[10px]  justify-center items-center">
+      <div className="mb-[10px] w-[100px] h-[50%] flex flex-col justify-center items-center">
+        <h3 className="mb-[10px] 2xl:text-[20px] 3xl:text-[22px] 4xl:text-[24px] text-[#DCDCDC] ">Start Date</h3>
         <div className="w-full flex justify-center items-center">
           <img src={CalendarIcon} className="w-[20px] h-[20px] text-white" />
 
@@ -96,8 +96,10 @@ const Dates2 = () => {
         </div>
       </div>
 
-      <div className="mb-[10px] w-[100px]">
-        <h3 className="mb-[10px] text-[#DCDCDC] ">End Date</h3>
+      <div className="w-full h-[1px] bg-white "></div>
+
+      <div className="mb-[10px] w-[100px] h-[50%] flex flex-col justify-center items-center">
+        <h3 className="mb-[10px] 2xl:text-[20px] 3xl:text-[22px] 4xl:text-[24px] text-[#DCDCDC] ">End Date</h3>
         <div className="w-full flex justify-center items-center">
           <img src={CalendarIcon} className="w-[20px] h-[20px]" />
 

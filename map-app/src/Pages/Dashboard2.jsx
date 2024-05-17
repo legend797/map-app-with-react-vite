@@ -58,8 +58,8 @@ const Dashboard2 = () => {
 	const [smallChartWidthTwo, setSmallChartWidthTwo] = useState(330);
 	const [smallChartHeightTwo, setSmallChartHeightTwo] = useState(220);
 	const [mediumChartWidth, setMediumChartWidth] = useState(820);
-	const [mediumChartHeight, setMediumChartHeight] = useState(230);
-	const [fullChartWidth, setFullChartWidth] = useState(900);
+	const [mediumChartHeight, setMediumChartHeight] = useState(250);
+	const [fullChartWidth, setFullChartWidth] = useState(1200);
 	const [fullChartHeight, setFullChartHeight] = useState(250);
 
 	const handleChartClick = (chartIndex) => {
@@ -937,7 +937,7 @@ const Dashboard2 = () => {
 							</div>
 							{/* Parent Right Container */}
 							<div className=" w-[70%] xl:h-[640px] 2xl:h-[1200px] flex flex-col gap-y-[14px] ">
-								{/*Top Right Container small*/}
+								{/*Top Right Container */}
 
 								<div
 									className={`relative p-[5px] bg-[#161616] w-full xl:h-[256px] 2xl:h-[480px] rounded-md flex justify-center items-center `}
@@ -983,12 +983,6 @@ const Dashboard2 = () => {
 												className="w-1/3 h-full p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center items-center"
 												onClick={() => handleChartClick(2)}
 											>
-												{/* <StackedBarChart
-                        width={smallChartWidth}
-                        height={smallChartHeight}
-                        fontSize={chartFontSize}
-                        isFullWidth={false}
-                      /> */}
 												<CStackedBarChart
 													width={smallChartWidth}
 													height={smallChartHeight}
@@ -998,7 +992,7 @@ const Dashboard2 = () => {
 									)}
 									{isFullWidth && (
 										<>
-											<div className="w-full bg-blue-700 xl:h-[256px] 2xl:h-[480px] flex justify-between items-center">
+											<div className="w-full  xl:h-[256px] 2xl:h-[450px] flex justify-center items-center py-[15px]">
 												{/* Left Navigate button */}
 												<button
 													className=" mr-[10px] text-[30px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
@@ -1006,16 +1000,10 @@ const Dashboard2 = () => {
 														setActiveChart((activeChart - 1 + 3) % 3)
 													}
 												>
-													{/* &#8592; */}
 													&lt;
 												</button>
-												
-												<div className="w-auto bg-red-200">
-													<div
-														className={`chart-transition  ${
-															activeChart === 0 ? "active" : ""
-														}`}
-													>
+												<div className="w-full xl:h-[256px] 2xl:h-[470px]  flex justify-center items-center">
+													<div className=" ">
 														{activeChart === 0 && (
 															// <SimpleLineChart
 															//   width={mediumChartWidth}
@@ -1029,14 +1017,8 @@ const Dashboard2 = () => {
 															/>
 														)}
 													</div>
-												</div>
 
-												<div className="w-auto bg-red-200">
-													<div
-														className={`chart-transition  ${
-															activeChart === 1 ? "active" : ""
-														}`}
-													>
+													<div className=" ">
 														{activeChart === 1 && (
 															// <ScatterChartComponent
 															//   width={mediumChartWidth}
@@ -1050,14 +1032,8 @@ const Dashboard2 = () => {
 															/>
 														)}
 													</div>
-												</div>
 
-												<div className="w-auto bg-red-200">
-													<div
-														className={`chart-transition  ${
-															activeChart === 2 ? "active" : ""
-														}`}
-													>
+													<div className=" ">
 														{activeChart === 2 && (
 															// <StackedBarChart
 															//   width={mediumChartWidth}
@@ -1074,97 +1050,13 @@ const Dashboard2 = () => {
 												</div>
 												{/* Right Navigate Button */}
 												<button
-													className="ml-[10px]  text-[30px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
+													className=" ml-[10px]  text-[30px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
 													onClick={() => setActiveChart((activeChart + 1) % 3)}
 												>
-													{/* &#8594; */}
 													&gt;
 												</button>
-
-												{/* <div className=" hidden">
-                      <button
-                        onClick={() =>
-                          setActiveChart((activeChart - 1 + 3) % 3)
-                        }
-                        className="slide-nav-arrow left "
-                      >
-                        <img src={L} className="w-[25px] h-[25px]" />
-                      </button>
-
-                      <button
-                        onClick={() => setActiveChart((activeChart + 1) % 3)}
-                        className="slide-nav-arrow right"
-                      >
-                        <img src={R} className="w-[25px] h-[25px]" />
-                      </button>
-                    </div> */}
 											</div>
 										</>
-										// <>
-										//    <div className="w-full h-[40%] flex justify-center items-center p-[20px]">
-										//     {/* Left Navigate button */}
-										//     <button
-										//       className="text-[30px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
-										//       onClick={() =>
-										//         setActiveChart((activeChart - 1 + 3) % 3)
-										//       }
-										//     >
-										//       {/* &#8592; */}
-										//       &lt;
-										//     </button>
-										//     <div
-										//       className={`chart-transition w-full ${
-										//         activeChart === 0 ? "active" : ""
-										//       }`}
-										//     >
-										//       {activeChart === 0 && (
-										//         <SimpleLineChart
-										//           width={mediumChartWidth}
-										//           height={mediumChartHeight}
-										//           fontSize={chartFontSize}
-										//           isFullWidth={true}
-										//         />
-										//       )}
-										//     </div>
-										//     <div
-										//       className={`chart-transition w-full ${
-										//         activeChart === 1 ? "active" : ""
-										//       }`}
-										//     >
-										//       {activeChart === 1 && (
-										//         <ScatterChartComponent
-										//           width={mediumChartWidth}
-										//           height={mediumChartHeight}
-										//           fontSize={chartFontSize}
-										//           isFullWidth={true}
-										//         />
-										//       )}
-										//     </div>
-										//     <div
-										//       className={`chart-transition w-full ${
-										//         activeChart === 2 ? "active" : ""
-										//       }`}
-										//     >
-										//       {activeChart === 2 && (
-										//         <StackedBarChart
-										//           width={mediumChartWidth}
-										//           height={mediumChartHeight}
-										//           fontSize={chartFontSize}
-										//           isFullWidth={true}
-										//         />
-										//       )}
-										//     </div>
-										//     {/* Right Navigate Button */}
-										//     <button
-										//       className="text-[30px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
-										//       onClick={() => setActiveChart((activeChart + 1) % 3)}
-										//     >
-										//       {/* &#8594; */}
-										//       &gt;
-										//     </button>
-										//   </div>
-
-										// </>
 									)}
 									<button
 										className="absolute bottom-0  right-[2px] w-[50px] h-[50px]  font-bold py-2 px-4 rounded"
@@ -1179,12 +1071,12 @@ const Dashboard2 = () => {
 								</div>
 
 								{/*Under Right Container  */}
-								<div className="bg-[#161616] w-full h-[60%] flex items-center rounded-md px-[20px] py-[10px]">
-									<div className="w-full h-[360px] bg-[#000000] rounded flex justify-between items-center py-[20px] ">
+								<div className="bg-[#161616] w-full xl:h-[384px] 2xl:h-[720px] flex items-center rounded-md px-[20px] py-[10px]">
+									<div className="w-full h-full bg-[#000000] rounded flex justify-between items-center py-[20px] ">
 										{/* Inner Left Container */}
-										<div className="w-2/5  flex flex-col  gap-[16px]   pl-[20px]">
+										<div className="w-2/5  h-full flex flex-col justify-center  gap-[16px] xl:gap-[20px] 2xl:gap-[25px] p-[15px]">
 											<div className="flex items-center justify-between mr-1">
-												<h2 className="text-white">မြန်မာ</h2>
+												<h2 className="text-white 2xl:text-[24px]">မြန်မာ</h2>
 												<div className=" flex justify-end p-0">
 													<button
 														className={`p-1 rounded mr-2 ${
@@ -1208,38 +1100,31 @@ const Dashboard2 = () => {
 													</button>
 												</div>
 											</div>
-											<div className="mb-[7px] bg-[#000000] w-[210px] h-[35px] border rounded-3xl px-3 flex items-center">
+											<div className="mb-[7px] bg-[#000000] w-[210px] h-[35px] 2xl:w-[300px] 2xl:h-[50px] border rounded-3xl px-3 flex items-center">
 												<img
 													src={Cicon}
-													className="w-[15px] h-[15px] text-white"
+													className="w-[15px] h-[15px] 2xl:w-[25px] 2xl:h-[25px] text-white"
 												/>
-												<p className="text-white text-[12px] ml-[16px]">
+												<p className="text-white text-[12px] 2xl:text-[16px] ml-[16px]">
 													4 June 2020 - 17 June 2020
 												</p>
 											</div>
 
 											<div className="flex items-center mb-[7px]">
-												<img src={M} className="w-[15px] h-[15px] text-white" />
-												<p className="text-white text-[11px] ml-[10px]">
+												<img
+													src={M}
+													className="w-[15px] h-[15px] 2xl:w-[25px] 2xl:h-[25px] text-white"
+												/>
+												<p className="text-white text-[11px] 2xl:text-[16px] ml-[10px]">
 													22.635687837958972,95.46938926418544
 												</p>
 											</div>
 
-											{/* <div className="text-[#7EADE3] w-[274px] h-[183px] bg-[#303d4c] px-[20px] py-[7px]">
-                      <p className="font-[700] mb-[7px]">
-                        The massacre of the military group
-                      </p>
-                      <p className="text-[11px]">
-                        Between September and December 2023, the military group
-                        committed at least (37) mass killings in which five (5)
-                        or more people were killed, and a total of (283)
-                        civilians were killed.2021 From February 2023 As of
-                        December, the military group has committed at least
-                        (210){" "}
-                      </p>
-                    </div> */}
-											<div>
-												<TextSectionCard />
+											<div className="2xl:hidden w-full h-[170px]  ">
+												<TextSectionCard height={"170px"} />
+											</div>
+											<div className="max-2xl:hidden w-full h-[350px]">
+												<TextSectionCard2 height={'350px'}/>
 											</div>
 										</div>
 
@@ -1249,9 +1134,9 @@ const Dashboard2 = () => {
 										</div>
 
 										{/* Inner Right Container */}
-										<div className="w-3/5 flex flex-col  gap-[16px]   px-[20px] ">
+										<div className="w-3/5  h-full 2xl:justify-center 2xl:items-center flex flex-col  py-[10px]  px-[20px] 3xl:py-[20px] 2xl:gap-y-[20px] 3xl:gap-y-[30px] 3xl:px-[30px]">
 											{/* top */}
-											<div className="lg:w-[360px] xl:w-[444px] h-[58px] border-[1px] border-[#1e1835] bg-[#000000] rounded-md flex justify-around items-center">
+											<div className="w-full 2xl:h-[150px] h-[58px] border-[1px] border-[#1e1835] bg-[#000000] rounded-md flex justify-around items-center">
 												<div className="flex flex-col ">
 													<p className="text-[12px] text-[#A6A1C0]">Price</p>
 													<p className="text-[13px] text-white">$9,542.39</p>
@@ -1280,11 +1165,11 @@ const Dashboard2 = () => {
 											</div>
 
 											{/* bottom  */}
-											<div className="flex  items-center mt-[10px] gap-[10px]">
-												<div className="w-[264px] h-[220px] border-[1px] border-[#1e1835] bg-[#000000] flex items-center  rounded-md">
+											<div className=" w-full  flex justify-between  items-center mt-[10px] 3xl:mt-[15px] gap-[10px] xl:gap-[25px]">
+												<div className="w-[264px] h-[220px] 3xl:w-[60%] 2xl:w-[350px] 2xl:h-[330px] border-[1px] border-[#1e1835] bg-[#000000] flex items-center  rounded-md">
 													<Data />
 												</div>
-												<div className="w-[170px] h-[220px] border-[1px] border-[#1e1835] bg-[#000000] rounded-md flex justify-center items-center">
+												<div className="w-[170px] h-[220px] 2xl:w-[200px] 3xl:w-[30%] 2xl:h-[330px] border-[1px] border-[#1e1835] bg-[#000000] rounded-md flex justify-center items-center">
 													<Dates2 />
 												</div>
 											</div>
@@ -1297,25 +1182,19 @@ const Dashboard2 = () => {
 				) : (
 					<>
 						{/* Parent Container */}
-						<div className="w-full h-full flex flex-col justify-center items-center">
+						<div className="w-full h-auto  flex flex-col justify-center items-center">
 							{/* Top Container */}
 
 							<div
-								className={`relative bg-[#161616] w-full h-[250px] rounded-md flex justify-center items-center gap-[10px] p-[5px] mb-[10px]`}
+								className={`relative bg-[#161616] w-full h-[250px] xl:h-[256px] 2xl:h-[380px]  rounded-md flex justify-center items-center gap-[10px] p-[5px] mb-[10px]`}
 							>
 								{!isFullWidth && (
 									<>
 										{/*1 container */}
 										<div
-											className="w-1/3 h-[230px] p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center"
+											className="w-1/3 h-full p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center"
 											onClick={() => handleChartClick(0)}
 										>
-											{/* <SimpleLineChart
-                        width={smallChartWidthTwo}
-                        height={smallChartHeightTwo}
-                        fontSize={chartFontSize}
-                        isFullWidth={false}
-                      /> */}
 											<CLineChart
 												width={smallChartWidthTwo}
 												height={smallChartHeightTwo}
@@ -1324,15 +1203,9 @@ const Dashboard2 = () => {
 										<div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
 										{/*2 container */}
 										<div
-											className="w-1/3 h-[230px]  p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+											className="w-1/3 h-full  p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 											onClick={() => handleChartClick(1)}
 										>
-											{/* <ScatterChartComponent
-                        width={smallChartWidthTwo}
-                        height={smallChartHeightTwo}
-                        fontSize={chartFontSize}
-                        isFullWidth={false}
-                      /> */}
 											<CScatterChart
 												width={smallChartWidthTwo}
 												height={smallChartHeightTwo}
@@ -1341,15 +1214,9 @@ const Dashboard2 = () => {
 										<div className="w-[1px]  h-full bg-[#4d5eb2]">---</div>
 										{/* 3 container */}
 										<div
-											className="w-1/3 h-[230px] p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
+											className="w-1/3 h-full p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 											onClick={() => handleChartClick(2)}
 										>
-											{/* <StackedBarChart
-                        width={smallChartWidthTwo}
-                        height={smallChartHeightTwo}
-                        fontSize={chartFontSize}
-                        isFullWidth={false}
-                      /> */}
 											<CStackedBarChart
 												width={smallChartWidthTwo}
 												height={smallChartHeightTwo}
@@ -1359,10 +1226,10 @@ const Dashboard2 = () => {
 								)}
 								{isFullWidth && (
 									<>
-										<div className="w-full h-[250px] flex justify-center items-center p-[10px]">
+										<div className="w-full xl:h-[256px] 2xl:h-[380px]  flex justify-between items-center p-[10px]">
 											{/* Left Navigate button */}
 											<button
-												className="mr-[170px] text-[40px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
+												className=" text-[40px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
 												onClick={() =>
 													setActiveChart((activeChart - 1 + 3) % 3)
 												}
@@ -1370,63 +1237,54 @@ const Dashboard2 = () => {
 												{/* &#8592; */}
 												&lt;
 											</button>
-											<div
-												className={`chart-transition ${
-													activeChart === 0 ? "active" : ""
-												}`}
-											>
-												{activeChart === 0 && (
-													// <SimpleLineChart
-													//   width={fullChartWidth}
-													//   height={fullChartHeight}
-													//   fontSize={chartFontSize}
-													//   isFullWidth={true}
-													// />
-													<CLineChart
-														width={fullChartWidth}
-														height={fullChartHeight}
-													/>
-												)}
-											</div>
-											<div
-												className={`chart-transition ${
-													activeChart === 1 ? "active" : ""
-												}`}
-											>
-												{activeChart === 1 && (
-													// <ScatterChartComponent
-													//   width={fullChartWidth}
-													//   height={fullChartHeight}
-													//   fontSize={chartFontSize}
-													//   isFullWidth={true}
-													// />
-													<CScatterChart
-														width={fullChartWidth}
-														height={fullChartHeight}
-													/>
-												)}
-											</div>
-											<div
-												className={`chart-transition ${
-													activeChart === 2 ? "active" : ""
-												}`}
-											>
-												{activeChart === 2 && (
-													// <StackedBarChart
-													//   width={fullChartWidth}
-													//   height={fullChartHeight}
-													//   fontSize={chartFontSize}
-													//   isFullWidth={true}
-													// />
-													<CStackedBarChart
-														width={fullChartWidth}
-														height={fullChartHeight}
-													/>
-												)}
+
+											<div className="w-full xl:h-[256px] 2xl:h-[380px]  flex justify-center items-center">
+												<div
+													className={`chart-transition ${
+														activeChart === 0 ? "active" : ""
+													}`}
+												>
+													{activeChart === 0 && (
+														<CLineChart
+															width={fullChartWidth}
+															height={fullChartHeight}
+														/>
+													)}
+												</div>
+												<div
+													className={`chart-transition ${
+														activeChart === 1 ? "active" : ""
+													}`}
+												>
+													{activeChart === 1 && (
+														<CScatterChart
+															width={fullChartWidth}
+															height={fullChartHeight}
+														/>
+													)}
+												</div>
+												<div
+													className={`chart-transition ${
+														activeChart === 2 ? "active" : ""
+													}`}
+												>
+													{activeChart === 2 && (
+														// <StackedBarChart
+														//   width={fullChartWidth}
+														//   height={fullChartHeight}
+														//   fontSize={chartFontSize}
+														//   isFullWidth={true}
+														// />
+														<CStackedBarChart
+															width={fullChartWidth}
+															height={fullChartHeight}
+														/>
+													)}
+												</div>
 											</div>
 											{/* Right Navigate Button */}
 											<button
-												className="ml-[170px] text-[40px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
+												className=" text-[40px] text-blue-500 font-bold hover:text-[#32daff] focus:outline-none"
 												onClick={() => setActiveChart((activeChart + 1) % 3)}
 											>
 												{/* &#8594; */}
@@ -1467,19 +1325,26 @@ const Dashboard2 = () => {
 							</div>
 
 							{/* Bottom Parent Container */}
-							<div className="w-full flex justify-between">
+							<div className="w-full  h-auto flex justify-between">
 								{/*Bottom Left Container */}
-								<div className="bg-[#161616] w-[30%] h-[600px] mr-[16px]">
-									<DataMap3 width={"full"} height={"600px"} />
+								{/* <div className="bg-[#161616] w-[30%] h-[720px] mr-[16px]">
+									<DataMap3 width={"full"} height={"720px"} />
+								</div> */}
+								<div className="bg-[#161616] w-[30%] 2xl:hidden  h-[640px] mr-[16px]">
+									<DataMap3 width={"full"} height={"640px"} />
+								</div>
+
+								<div className="bg-[#161616] w-[30%] max-2xl:hidden  h-[800px] mr-[16px]">
+									<DataMap3 width={"full"} height={"800px"} />
 								</div>
 
 								{/*Bottom Right Container  */}
-								<div className="bg-[#161616] w-[70%] h-[600px] flex justify-center items-center rounded-md  px-[20px]">
-									<div className="w-full h-[570px] bg-[#000000] rounded flex justify-between items-center p-[40px]">
+								<div className="bg-[#161616] w-[70%] h-[640px] 2xl:h-[800px] flex justify-center items-center rounded-md  p-[20px]">
+									<div className="w-full h-full bg-[#000000] rounded flex justify-between items-center p-[10px]">
 										{/* Inner Left Container */}
-										<div className="w-1/2 flex flex-col gap-[16px]    ">
-											<div className="flex items-center justify-between mr-1">
-												<h2 className="text-white">မြန်မာ</h2>
+										<div className="w-1/2  h-full  justify-center  xl:gap-[30px]  mx-[10px] flex flex-col gap-[16px]    ">
+											<div className="flex items-center justify-between mr-1 ">
+												<h2 className="text-white xl:text-[20px] 2xl:text-[24px] 3xl:text-[26px] 4xl:text-[28px]">မြန်မာ</h2>
 												<div className="flex justify-end p-0">
 													<button
 														className={`p-1 rounded mr-2 ${
@@ -1503,19 +1368,22 @@ const Dashboard2 = () => {
 													</button>
 												</div>
 											</div>
-											<div className="mb-[7px] bg-[#000000] w-[210px] h-[35px] border rounded-3xl px-3 flex items-center">
+											<div className="mb-[7px] bg-[#000000] w-[210px] h-[35px] 2xl:w-[300px] 2xl:h-[50px] border rounded-3xl px-3 flex items-center">
 												<img
 													src={Cicon}
-													className="w-[15px] h-[15px] text-white"
+													className="w-[15px] h-[15px] xl:w-[20px] xl:h-[20px] 2xl:w-[25px] 2xl:h-[25px] text-white"
 												/>
-												<p className="text-white text-[12px] ml-[16px]">
+												<p className="text-white text-[12px] 2xl:text-[16px] ml-[16px]">
 													4 June 2020 - 17 June 2020
 												</p>
 											</div>
 
 											<div className="flex items-center mb-[7px]">
-												<img src={M} className="w-[15px] h-[15px] text-white" />
-												<p className="text-white text-[11px] ml-[10px]">
+												<img
+													src={M}
+													className="w-[15px] h-[15px] xl:w-[18px] xl:h-[18px] 2xl:w-[25px] 2xl:h-[25px] text-white"
+												/>
+												<p className="text-white text-[11px] xl:text-[14px] 2xl:text-[16px] 3xl:text-[18px] 4xl:text-[20px] ml-[10px]">
 													22.635687837958972,95.46938926418544
 												</p>
 											</div>
@@ -1537,20 +1405,31 @@ const Dashboard2 = () => {
                         </p>
                       </div> */}
 
-											<div>
-												<TextSectionCard2 />
+											{/* <div className="max-2xl:hidden w-full h-[350px]">
+												<TextSectionCard2 height={'350px'}/>
+											</div> */}
+
+											
+
+											<div className="w-full 3xl:hidden max-h-[350px] ">
+												
+												<TextSectionCard2 height={"350px"} />
+												
+											</div>
+											<div className="w-full max-3xl:hidden h-[400px]">
+												<TextSectionCard2  height={"400px"}/>
 											</div>
 										</div>
 
 										{/* Vertical Dashed Line */}
-										<div className="relative w-[1px] h-full bg-gray-300">
+										<div className="mx-[10px] relative w-[1px] h-full bg-gray-300">
 											<div className="absolute  h-full border-dashed border-gray-300"></div>
 										</div>
 
 										{/* Inner Right Container */}
-										<div className="w-1/2 flex flex-col justify-center   px-[20px] ">
+										<div className="w-1/2  h-full xl:justify-center xl:items-center flex flex-col justify-center 2xl:gap-y-[40px]  px-[20px] ">
 											{/* top */}
-											<div className="w-[369px] h-[154px] border-[1px] border-[#1e1835] bg-[#000408] rounded-md grid grid-cols-3 justify-center items-center pl-[25px]">
+											<div className="w-[369px] h-[20%] 2xl:w-full border-[1px] border-[#1e1835] bg-[#000408] rounded-md grid grid-cols-3 justify-center items-center pl-[25px]">
 												<div className="flex flex-col ">
 													<p className="text-[12px] text-[#A6A1C0]">Price</p>
 													<p className="text-[13px] text-white">$9,542.39</p>
@@ -1574,12 +1453,23 @@ const Dashboard2 = () => {
 											</div>
 
 											{/* bottom  */}
-											<div className="w-[369px] flex flex-col items-center mt-[10px] gap-[10px]">
+											<div className="4xl:hidden w-[369px] 2xl:w-full flex flex-col items-center mt-[10px] 2xl:mt-0 2xl:gap-[40px] gap-[10px]">
 												<div className="w-full h-[227px] border-[1px] border-[#1e1835] bg-[#000408]  rounded-md">
 													<Data />
 												</div>
-												<div className="w-full h-[100px] border-[1px] border-[#1e1835] bg-[#000408] rounded-md flex justify-center items-center">
+												
+												<div className="w-full  bg-[#000408] h-[100px] border-[1px] border-[#1e1835]  rounded-md flex justify-center items-center">
 													<Dates />
+												</div>
+											</div>
+
+											{/* bottom  */}
+											<div className="max-4xl:hidden w-full h-[55%]  flex justify-between  items-center mt-[10px] 3xl:mt-[15px] gap-[10px] xl:gap-[25px]">
+												<div className="w-[264px] h-[220px] 3xl:w-[60%] 2xl:w-[350px] 2xl:h-full border-[1px] border-[#1e1835] bg-[#000000] flex items-center  rounded-md">
+													<Data />
+												</div>
+												<div className="w-[170px] h-[220px] 2xl:w-[200px] 3xl:w-[30%] 2xl:h-full border-[1px] border-[#1e1835] bg-[#000000] rounded-md flex justify-center items-center">
+													<Dates2 />
 												</div>
 											</div>
 										</div>

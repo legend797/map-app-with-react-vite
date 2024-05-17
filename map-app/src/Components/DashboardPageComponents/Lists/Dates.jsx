@@ -33,7 +33,7 @@ const Dates = ({fontSize}) => {
 
 
   return (
-    <div className=" w-full px-[30px] flex justify-between items-center">
+    <div className=" w-full px-[30px] flex justify-between 2xl:justify-evenly items-center">
       
       <div className="mb-[10px] w-[100px] ">
         <div className={`mb-[10px] text-[${fontSize}] text-[#DCDCDC] `}>Start Date</div>
@@ -98,7 +98,7 @@ const Dates = ({fontSize}) => {
           />
         </div>
       </div>
-              <div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
+              <div className="w-[2px] h-full bg-white ">---</div>
       <div className="mb-[10px] w-[100px]">
         <h3 className={`mb-[10px] text-[${fontSize}] text-[#DCDCDC]`} >End Date</h3>
         <div className="w-full flex gap-[15px] justify-between items-center">

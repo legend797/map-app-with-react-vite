@@ -18,7 +18,7 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
 
-const TextSectionCard = () => {
+const TextSectionCard = ({height}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalContent, setModalContent] = useState('');
@@ -61,7 +61,7 @@ const TextSectionCard = () => {
   return (
     <div>
       <div
-        className="text-[#7EADE3] border-[1px] border-[#1e1835] hover:bg-[#2c4766] w-[240px] h-[160px] bg-[#000408]  shadow-md rounded-lg  flex justify-between items-center cursor-pointer gap-x-[10px] px-[7px] py-[10px]"
+        className={`text-[#7EADE3] border-[1px] border-[#1e1835] hover:bg-[#2c4766] w-full h-[${height}] bg-[#000408]  shadow-md rounded-lg  flex justify-between items-center cursor-pointer gap-x-[10px] px-[7px] py-[10px]`}
         onClick={handleCardClick}
       >
         {/* <div className="flex space-x-2 "> </div> */}

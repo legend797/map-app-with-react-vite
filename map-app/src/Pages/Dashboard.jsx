@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import TextSectionCard from "../Components/DashboardPageComponents/TextSectionCard";
 
-import LineChart from "../Components/DashboardPageComponents/Lists/LineChart";
-
 import DataMap3 from "../Components/DashboardPageComponents/DataMap3";
 
-// import DataTable2 from "../Components/DashboardPageComponents/DataTable2";
 // Icons
 import Cicon from "./../assets/calendar.svg";
 import M from "./../assets/map.svg";
@@ -16,17 +13,12 @@ import Min from "../assets/minimize.svg";
 import L from "../assets/left-arrow.svg";
 import R from "../assets/right-arrow.svg";
 
-// Slides
-// import { Slide } from 'react-slideshow-image';
-// import 'react-slideshow-image/dist/styles.css';
 
 import Dates from "../Components/DashboardPageComponents/Lists/Dates";
 import Dates2 from "../Components/DashboardPageComponents/Lists/Dates2";
-import StackedBarChart from "../Components/DashboardPageComponents/StackedBarChart";
-import ScatterChartComponent from "../Components/DashboardPageComponents/ScatterChartComponent";
-import SimpleLineChart from "../Components/DashboardPageComponents/SimpleLineChart";
+
 import TextSectionCard2 from "../Components/DashboardPageComponents/TextSectionCard2";
-// import { ZoomControl } from "react-leaflet";
+
 
 // Tab Section
 import Tab from "../Components/DashboardPageComponents/Tab";
@@ -35,7 +27,7 @@ import CLineChart from "../Components/DashboardPageComponents/CLineChart";
 import CScatterChart from "../Components/DashboardPageComponents/CScatterChart";
 import CStackedBarChart from "../Components/DashboardPageComponents/CStackedBarChart";
 
-const Dashboard2 = () => {
+const Dashboard = () => {
 	const [activeTab, setActiveTab] = useState("chart");
 
 	const [activeChart, setActiveChart] = useState(0); // 0, 1, or 2 for the three charts
@@ -48,10 +40,7 @@ const Dashboard2 = () => {
 	const [ipadChartHeight, setIpadChartHeight] = useState(230);
 	const [ipadChartWidthTwo, setIpadChartWidthTwo] = useState(690);
 	const [ipadChartHeightTwo, setIpadChartHeightTwo] = useState(230);
-	// const [ipadChartWidth,setIpadChartWidth] = useState(235);
-	// const [ipadChartHeight,setIpadChartHeight] = useState(230);
-	// const [ipadChartWidth,setIpadChartWidth] = useState(235);
-	// const [ipadChartHeight,setIpadChartHeight] = useState(230);
+	
 
 	const [smallChartWidth, setSmallChartWidth] = useState(300);
 	const [smallChartHeight, setSmallChartHeight] = useState(220);
@@ -66,8 +55,7 @@ const Dashboard2 = () => {
 		setActiveChart(chartIndex);
 		setIsFullWidth(!isFullWidth);
 	};
-	let chartFontSize = 12;
-	const chartFontSize2 = 10;
+	
 
 	const handleTabChange = (tab) => {
 		setActiveTab(tab);
@@ -79,7 +67,7 @@ const Dashboard2 = () => {
 			<div className=" md:hidden ">
 				{/* Top Section */}
 
-				<div className=" md:hidden w-full h-[200px] flex flex-col  justify-center items-center pt-[3px]">
+				<div className=" md:hidden w-full h-[200px] flex flex-col justify-between items-center pt-[3px]">
 					<div className=" bg-[#202020] border-[#737373] rounded-[8px] gap-[5px] w-[80%] h-[30px]  px-4 py-[2px] flex  justify-center items-center">
 						<Tab
 							active={activeTab === "chart"}
@@ -131,11 +119,15 @@ const Dashboard2 = () => {
 									className="w-1/3  p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center"
 									onClick={() => handleChartClick(0)}
 								>
-									<SimpleLineChart
+									{/* <SimpleLineChart
 										width={ipadChartWidth}
 										height={smallChartHeightTwo}
 										fontSize={chartFontSize}
 										isFullWidth={false}
+									/> */}
+									<CLineChart
+									width={ipadChartWidth}
+									height={smallChartHeightTwo}
 									/>
 								</div>
 								<div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
@@ -144,11 +136,15 @@ const Dashboard2 = () => {
 									className="w-1/3   p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 									onClick={() => handleChartClick(1)}
 								>
-									<ScatterChartComponent
+									{/* <ScatterChartComponent
 										width={ipadChartWidth}
 										height={smallChartHeightTwo}
 										fontSize={chartFontSize}
 										isFullWidth={false}
+									/> */}
+									<CScatterChart
+									width={ipadChartWidth}
+									height={smallChartHeightTwo}
 									/>
 								</div>
 								<div className="w-[1px]  h-full bg-[#4d5eb2]">---</div>
@@ -157,11 +153,15 @@ const Dashboard2 = () => {
 									className="w-1/3  p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 									onClick={() => handleChartClick(2)}
 								>
-									<StackedBarChart
+									{/* <StackedBarChart
 										width={ipadChartWidth}
 										height={smallChartHeightTwo}
 										fontSize={chartFontSize}
 										isFullWidth={false}
+									/> */}
+									<CStackedBarChart
+									width={ipadChartWidth}
+									height={smallChartHeightTwo}
 									/>
 								</div>
 							</>
@@ -183,11 +183,15 @@ const Dashboard2 = () => {
 										}`}
 									>
 										{activeChart === 0 && (
-											<SimpleLineChart
-												width={ipadChartWidthTwo}
-												height={fullChartHeight}
-												fontSize={chartFontSize}
-												isFullWidth={true}
+											// <SimpleLineChart
+											// 	width={ipadChartWidthTwo}
+											// 	height={fullChartHeight}
+											// 	fontSize={chartFontSize}
+											// 	isFullWidth={true}
+											// />
+											<CLineChart
+											width={ipadChartWidthTwo}
+											height={fullChartHeight}
 											/>
 										)}
 									</div>
@@ -197,11 +201,15 @@ const Dashboard2 = () => {
 										}`}
 									>
 										{activeChart === 1 && (
-											<ScatterChartComponent
-												width={ipadChartWidthTwo}
-												height={fullChartHeight}
-												fontSize={chartFontSize}
-												isFullWidth={true}
+											// <ScatterChartComponent
+											// 	width={ipadChartWidthTwo}
+											// 	height={fullChartHeight}
+											// 	fontSize={chartFontSize}
+											// 	isFullWidth={true}
+											// />
+											<CScatterChart
+											width={ipadChartWidthTwo}
+											height={fullChartHeight}
 											/>
 										)}
 									</div>
@@ -211,11 +219,15 @@ const Dashboard2 = () => {
 										}`}
 									>
 										{activeChart === 2 && (
-											<StackedBarChart
-												width={ipadChartWidthTwo}
-												height={fullChartHeight}
-												fontSize={chartFontSize}
-												isFullWidth={true}
+											// <StackedBarChart
+											// 	width={ipadChartWidthTwo}
+											// 	height={fullChartHeight}
+											// 	fontSize={chartFontSize}
+											// 	isFullWidth={true}
+											// />
+											<CStackedBarChart
+											width={ipadChartWidthTwo}
+											height={fullChartHeight}
 											/>
 										)}
 									</div>
@@ -419,11 +431,15 @@ const Dashboard2 = () => {
 											className="w-1/3  p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center"
 											onClick={() => handleChartClick(0)}
 										>
-											<SimpleLineChart
+											{/* <SimpleLineChart
 												width={ipadChartWidth}
 												height={ipadChartHeight}
 												fontSize={chartFontSize2}
 												isFullWidth={false}
+											/> */}
+											<CLineChart 
+											width={ipadChartWidth}
+											height = {ipadChartHeight}
 											/>
 										</div>
 										<div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
@@ -432,11 +448,15 @@ const Dashboard2 = () => {
 											className="w-1/3   p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 											onClick={() => handleChartClick(1)}
 										>
-											<ScatterChartComponent
+											{/* <ScatterChartComponent
 												width={ipadChartWidth}
 												height={ipadChartHeight}
 												fontSize={chartFontSize2}
 												isFullWidth={false}
+											/> */}
+											<CScatterChart
+											width ={ipadChartWidth}
+											height = {ipadChartHeight}
 											/>
 										</div>
 										<div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
@@ -445,11 +465,15 @@ const Dashboard2 = () => {
 											className="w-1/3  p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 											onClick={() => handleChartClick(2)}
 										>
-											<StackedBarChart
+											{/* <StackedBarChart
 												width={ipadChartWidth}
 												height={ipadChartHeight}
 												fontSize={chartFontSize2}
 												isFullWidth={false}
+											/> */}
+											<CStackedBarChart
+											width={ipadChartWidth}
+											height = {ipadChartHeight}
 											/>
 										</div>
 									</>
@@ -473,12 +497,16 @@ const Dashboard2 = () => {
 												}`}
 											>
 												{activeChart === 0 && (
-													<SimpleLineChart
-														width={ipadChartWidthTwo}
-														height={mediumChartHeight}
-														fontSize={chartFontSize}
-														isFullWidth={true}
-													/>
+													// <SimpleLineChart
+													// 	width={ipadChartWidthTwo}
+													// 	height={mediumChartHeight}
+													// 	fontSize={chartFontSize}
+													// 	isFullWidth={true}
+													// />
+													<CLineChart 
+											width={ipadChartWidthTwo}
+											height = {mediumChartHeight}
+											/>
 												)}
 											</div>
 											<div
@@ -487,11 +515,15 @@ const Dashboard2 = () => {
 												}`}
 											>
 												{activeChart === 1 && (
-													<ScatterChartComponent
-														width={ipadChartWidthTwo}
-														height={mediumChartHeight}
-														fontSize={chartFontSize}
-														isFullWidth={true}
+													// <ScatterChartComponent
+													// 	width={ipadChartWidthTwo}
+													// 	height={mediumChartHeight}
+													// 	fontSize={chartFontSize}
+													// 	isFullWidth={true}
+													// />
+													<CScatterChart
+													width={ipadChartWidthTwo}
+													height={mediumChartHeight}
 													/>
 												)}
 											</div>
@@ -501,11 +533,15 @@ const Dashboard2 = () => {
 												}`}
 											>
 												{activeChart === 2 && (
-													<StackedBarChart
-														width={ipadChartWidthTwo}
-														height={mediumChartHeight}
-														fontSize={chartFontSize}
-														isFullWidth={true}
+													// <StackedBarChart
+													// 	width={ipadChartWidthTwo}
+													// 	height={mediumChartHeight}
+													// 	fontSize={chartFontSize}
+													// 	isFullWidth={true}
+													// />
+													<CStackedBarChart
+													width={ipadChartWidthTwo}
+													height = {mediumChartHeight}
 													/>
 												)}
 											</div>
@@ -579,19 +615,7 @@ const Dashboard2 = () => {
 											</p>
 										</div>
 
-										{/* <div className="text-[#7EADE3] w-[274px] h-[183px] bg-[#303d4c] px-[20px] py-[7px]">
-                      <p className="font-[700] mb-[7px]">
-                        The massacre of the military group
-                      </p>
-                      <p className="text-[11px]">
-                        Between September and December 2023, the military group
-                        committed at least (37) mass killings in which five (5)
-                        or more people were killed, and a total of (283)
-                        civilians were killed.2021 From February 2023 As of
-                        December, the military group has committed at least
-                        (210){" "}
-                      </p>
-                    </div> */}
+										
 										<div>
 											<TextSectionCard />
 										</div>
@@ -663,12 +687,17 @@ const Dashboard2 = () => {
 											className="w-1/3  p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center"
 											onClick={() => handleChartClick(0)}
 										>
-											<SimpleLineChart
+											{/* <SimpleLineChart
 												width={smallChartWidthTwo}
 												height={smallChartHeightTwo}
 												fontSize={chartFontSize}
 												isFullWidth={false}
+											/> */}
+											<CLineChart 
+											width={smallChartWidthTwo}
+											height = {smallChartHeightTwo}
 											/>
+											
 										</div>
 										<div className="w-[1px] h-full bg-[#4d5eb2]">---</div>
 										{/*2 container */}
@@ -676,11 +705,15 @@ const Dashboard2 = () => {
 											className="w-1/3   p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 											onClick={() => handleChartClick(1)}
 										>
-											<ScatterChartComponent
+											{/* <ScatterChartComponent
 												width={smallChartWidthTwo}
 												height={smallChartHeightTwo}
 												fontSize={chartFontSize}
 												isFullWidth={false}
+											/> */}
+											<CScatterChart
+											width={smallChartWidthTwo}
+											height= {smallChartHeightTwo}
 											/>
 										</div>
 										<div className="w-[1px]  h-full bg-[#4d5eb2]">---</div>
@@ -689,11 +722,15 @@ const Dashboard2 = () => {
 											className="w-1/3  p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center"
 											onClick={() => handleChartClick(2)}
 										>
-											<StackedBarChart
+											{/* <StackedBarChart
 												width={smallChartWidthTwo}
 												height={smallChartHeightTwo}
 												fontSize={chartFontSize}
 												isFullWidth={false}
+											/> */}
+											<CStackedBarChart
+											width={smallChartWidthTwo}
+											height={smallChartHeightTwo}
 											/>
 										</div>
 									</>
@@ -717,11 +754,15 @@ const Dashboard2 = () => {
 												}`}
 											>
 												{activeChart === 0 && (
-													<SimpleLineChart
-														width={fullChartWidth}
-														height={ipadChartHeight}
-														fontSize={chartFontSize}
-														isFullWidth={true}
+													// <SimpleLineChart
+													// 	width={fullChartWidth}
+													// 	height={ipadChartHeight}
+													// 	fontSize={chartFontSize}
+													// 	isFullWidth={true}
+													// />
+													<CLineChart 
+														width = {fullChartWidth}
+														height = {ipadChartHeight}
 													/>
 												)}
 											</div>
@@ -731,11 +772,15 @@ const Dashboard2 = () => {
 												}`}
 											>
 												{activeChart === 1 && (
-													<ScatterChartComponent
-														width={fullChartWidth}
-														height={ipadChartHeight}
-														fontSize={chartFontSize}
-														isFullWidth={true}
+													// <ScatterChartComponent
+													// 	width={fullChartWidth}
+													// 	height={ipadChartHeight}
+													// 	fontSize={chartFontSize}
+													// 	isFullWidth={true}
+													// />
+													<CScatterChart
+													width={fullChartWidth}
+													height={ipadChartHeight}
 													/>
 												)}
 											</div>
@@ -745,11 +790,15 @@ const Dashboard2 = () => {
 												}`}
 											>
 												{activeChart === 2 && (
-													<StackedBarChart
-														width={fullChartWidth}
-														height={ipadChartHeight}
-														fontSize={chartFontSize}
-														isFullWidth={true}
+													// <StackedBarChart
+													// 	width={fullChartWidth}
+													// 	height={ipadChartHeight}
+													// 	fontSize={chartFontSize}
+													// 	isFullWidth={true}
+													// />
+													<CStackedBarChart
+													width={fullChartWidth}
+													height={ipadChartHeight}
 													/>
 												)}
 											</div>
@@ -849,22 +898,7 @@ const Dashboard2 = () => {
 												</p>
 											</div>
 
-											{/* <div className="text-[#7EADE3] w-[379px] h-[321px] bg-[#303d4c] px-[40px] py-[20px]">
-                        <p className="font-[700] mb-[7px] text-[20px]">
-                          The massacre of the military group
-                        </p>
-                        <p className="text-[14px]">
-                          Between September and December 2023, the military
-                          group committed at least (37) mass killings in which
-                          five (5) or more people were killed, and a total of
-                          (283) civilians were killed.2021 From February 2023 As
-                          of December, the military group has committed at least
-                          (210) Between September and December 2023, the
-                          military group committed at least (37) mass killings
-                          in which five (5) or more people were killed, and a
-                          total of (283){" "}
-                        </p>
-                      </div> */}
+											
 
 											<div>
 												<TextSectionCard />
@@ -949,12 +983,7 @@ const Dashboard2 = () => {
 												className="w-1/3 h-full p-[5px] hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer  flex justify-center items-center"
 												onClick={() => handleChartClick(0)}
 											>
-												{/* <SimpleLineChart
-                        width={smallChartWidth}
-                        height={smallChartHeight}
-                        fontSize={chartFontSize}
-                        isFullWidth={false}
-                      /> */}
+												
 												<CLineChart
 													width={smallChartWidth}
 													height={smallChartHeight}
@@ -966,12 +995,7 @@ const Dashboard2 = () => {
 												className="w-1/3  h-full p-[5px]  hover:bg-[#233141] hover:bg-opacity-50 rounded cursor-pointer flex justify-center items-center"
 												onClick={() => handleChartClick(1)}
 											>
-												{/* <ScatterChartComponent
-                        width={smallChartWidth}
-                        height={smallChartHeight}
-                        fontSize={chartFontSize}
-                        isFullWidth={false}
-                      /> */}
+												
 												<CScatterChart
 													width={smallChartWidth}
 													height={smallChartHeight}
@@ -1005,12 +1029,7 @@ const Dashboard2 = () => {
 												<div className="w-full xl:h-[256px] 2xl:h-[470px]  flex justify-center items-center">
 													<div className=" ">
 														{activeChart === 0 && (
-															// <SimpleLineChart
-															//   width={mediumChartWidth}
-															//   height={mediumChartHeight}
-															//   fontSize={chartFontSize}
-															//   isFullWidth={true}
-															// />
+															
 															<CLineChart
 																width={mediumChartWidth}
 																height={mediumChartHeight}
@@ -1020,12 +1039,7 @@ const Dashboard2 = () => {
 
 													<div className=" ">
 														{activeChart === 1 && (
-															// <ScatterChartComponent
-															//   width={mediumChartWidth}
-															//   height={mediumChartHeight}
-															//   fontSize={chartFontSize}
-															//   isFullWidth={true}
-															// />
+														
 															<CScatterChart
 																width={mediumChartWidth}
 																height={mediumChartHeight}
@@ -1035,12 +1049,7 @@ const Dashboard2 = () => {
 
 													<div className=" ">
 														{activeChart === 2 && (
-															// <StackedBarChart
-															//   width={mediumChartWidth}
-															//   height={mediumChartHeight}
-															//   fontSize={chartFontSize}
-															//   isFullWidth={true}
-															// />
+															
 															<CStackedBarChart
 																width={mediumChartWidth}
 																height={mediumChartHeight}
@@ -1269,12 +1278,7 @@ const Dashboard2 = () => {
 													}`}
 												>
 													{activeChart === 2 && (
-														// <StackedBarChart
-														//   width={fullChartWidth}
-														//   height={fullChartHeight}
-														//   fontSize={chartFontSize}
-														//   isFullWidth={true}
-														// />
+														
 														<CStackedBarChart
 															width={fullChartWidth}
 															height={fullChartHeight}
@@ -1484,4 +1488,4 @@ const Dashboard2 = () => {
 	);
 };
 
-export default Dashboard2;
+export default Dashboard;

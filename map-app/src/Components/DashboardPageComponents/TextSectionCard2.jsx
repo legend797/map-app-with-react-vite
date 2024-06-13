@@ -1,18 +1,4 @@
-// import React from 'react'
 
-// const TextSectionCard = ({ title, content, onClick }) => {
-//     return (
-//       <div
-//         className="text-[#7EADE3] w-[274px] h-[183px] bg-[#303d4c] px-[20px] py-[7px] shadow-md rounded-lg p-6 cursor-pointer hover:shadow-xl transition-shadow duration-300"
-//         onClick={onClick}
-//       >
-//         <p className="font-[700] mb-[7px] text-[12px]">{title}</p>
-//         <p className="text-[10px]">{content}</p>
-//       </div>
-//     );
-//   };
-
-// export default TextSectionCard;
 
 
 import React, { useState } from 'react';
@@ -86,15 +72,7 @@ const TextSectionCard2 = ({height}) => {
           </div>
         </div>
       
-        {/* <div
-          className="absolute bottom-0 right-0 px-4 py-2 cursor-pointer"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleCardClick();
-          }}
-        > */}
-          {/* <p className="text-[#7EADE3] text-[10px]">Learn More</p> */}
-        {/* </div> */}
+       
         <button
               className="text-[35px] font-bold hover:text-[#0f2947] focus:outline-none"
               onClick={(e) => {

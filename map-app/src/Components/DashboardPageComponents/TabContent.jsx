@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import SimpleLineChart from "./SimpleLineChart";
-import ScatterChartComponent from "./ScatterChartComponent";
-import StackedBarChart from "./StackedBarChart";
+
 import Dates3 from "./Lists/Dates3";
 import Data2 from "./Data2";
+import CLineChart from "./CLineChart";
+import CScatterChart from "./CScatterChart";
 
 const TabContent = ({ active }) => {
   const [activeChart, setActiveChart] = useState(0);
@@ -38,7 +38,7 @@ const TabContent = ({ active }) => {
               }`}
             >
               {activeChart === 0 && (
-                <SimpleLineChart
+                <CLineChart
                   width={mobileWidth}
                   height={mobileHeight}
                   fontSize={chartFontSize}
@@ -52,7 +52,7 @@ const TabContent = ({ active }) => {
               }`}
             >
               {activeChart === 1 && (
-                <ScatterChartComponent
+                <CScatterChart
                   width={mobileWidth}
                   height={mobileHeight}
                   fontSize={chartFontSize}
@@ -66,7 +66,7 @@ const TabContent = ({ active }) => {
               }`}
             >
               {activeChart === 2 && (
-                <StackedBarChart
+                <CStackedBarChart
                   width={mobileWidth}
                   height={mobileHeight}
                   fontSize={chartFontSize}
@@ -116,7 +116,7 @@ const TabContent = ({ active }) => {
     case "categories":
       return (
         <div>
-          <div className="w-full px-[10px] h-[160px] border-[1px] border-[#1e1835] bg-[#000408]  rounded-md">
+          <div className="w-[90%] mx-auto px-[10px] h-[160px] border-[1px] border-[#1e1835] bg-[#000408]  rounded-md">
             <Data2 />
           </div>
         </div>
@@ -126,7 +126,7 @@ const TabContent = ({ active }) => {
       return (
         <div>
           
-          <div className=" w-[200px] mx-auto flex justify-center h-auto mt-[10px] border-[1px] border-[#1e1835] bg-[#000408] rounded-md  items-center">
+          <div className=" w-[70%] mt-[100px] mx-auto  flex justify-center h-auto border-[1px] border-[#1e1835] bg-[#000408] rounded-md  items-center">
             <Dates3 fontSize={"11px"}  />
           </div>
         </div>
